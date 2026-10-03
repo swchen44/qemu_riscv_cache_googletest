@@ -1,10 +1,10 @@
 # RV32 GoogleTest / FreeRTOS / MicroPython 重現實驗
 
-> 發佈中：source、測試、計畫與FAQ已提供；required Release資產與Ubuntu完整驗收仍在補齊，不能只下載Source ZIP便宣稱完整離線重現。
+> 發佈中：source、測試、計畫與FAQ已提供；Ubuntu完整23步已實跑通過；required Release資產仍待發佈，不能只下載Source ZIP便宣稱完整離線重現。
 
 **目前是功能測試移植。尚未在QEMU實作自訂L1/L2、ILM/DLM或cycle/latency model。** Repo名稱中的cache是後續研究方向，不是已完成項；QEMU/GoogleTest的ms不能證明產品200→150ms。
 
-目標：讓下一位工程師/AI把同一套C++ GoogleTest＋FFF從host帶到真正RV32，並把完整source與離線依賴移入公司Ubuntu24.04 x86-64環境。未包含公司私有code。
+目標：讓下一位工程師/AI把同一套C++ GoogleTest＋FFF從host帶到真正RV32，並把完整source與離線依賴移入公司Ubuntu24.04 x86-64環境。未包含公司私有code。此repo是public；帶入公司並加入真實code前，應先改用內部remote或停用外網push，不能把公司source/log/credentials推回這裡。
 
 ## 已實跑與尚未完成
 
@@ -16,11 +16,13 @@
 | 真MicroPython host→RV32裸機 | 同一份11 tests，兩端PASS |
 | 各路徑刻意錯誤oracle | 預期exit1，均被抓到 |
 | 上述Debian13 baseline乾淨重建 | 已驗證，包括此次新cloud還原重跑 |
-| Ubuntu24.04完整TCG VM | boot及host測試已PASS；FreeRTOS驗收發現completion同步race，已加入真barrier，正重跑 |
+| Ubuntu24.04完整TCG VM | 23/23步PASS：第一階段15/icount、MicroPython8/raw；保留raw timeout對照失敗 |
 | 自訂cache/timing模型、產品150ms | 尚未實作/驗證 |
 | 遠端commit新下載後重跑 | 已從9f9e8f4新clone驗SHA並跑15+8步PASS（Debian；固定local dependency cache） |
 
 詳細狀態以[Checklist](docs/CHECKLIST.md)、[證據說明](docs/EVIDENCE.md)與各evidence/results.json為準。
+
+正常Ubuntu驗收證據：[23步原始log與profile](evidence/ubuntu-24.04/README.md)。低階runner預設raw；正式功能重現請明示以下已測profile。icount不是硬體效能模型。
 
 ## 文件入口
 
@@ -28,6 +30,7 @@
 - [原始研究報告、方案比較與37個來源](docs/research/README.md)
 - [Checklist](docs/CHECKLIST.md)
 - [FAQ-001～005](rv32_gtest_poc/docs/FAQ.md)：重編、C++ linker、實測大小/記憶體、entry、尚未加入cache模型
+- [Clock profiles與raw失敗](docs/CLOCK_PROFILES.md) / [固定依賴與source完整性](docs/DEPENDENCIES.md)
 - [實際踩坑紀錄](docs/PITFALLS.md)
 - [Ubuntu24.04安裝](docs/INSTALL_UBUNTU_24_04.md) / [Debian13歷史baseline](docs/INSTALL_DEBIAN_BASELINE.md)
 - [內網必帶清單與GitHub ZIP缺口](docs/OFFLINE_HANDOFF.md)
@@ -42,8 +45,8 @@ python3 scripts/preflight.py --profile ubuntu-24.04
 python3 scripts/prepare-ubuntu-sources.py .
 export RV32_HOST_PROFILE=ubuntu-24.04
 export QEMU=/usr/bin/qemu-system-riscv32
-(cd rv32_gtest_poc && python3 scripts/verify_all.py)
-(cd micropython_gtest_poc && python3 scripts/verify_all.py)
+(cd rv32_gtest_poc && RV32_QEMU_CLOCK=icount python3 scripts/verify_all.py)
+(cd micropython_gtest_poc && RV32_QEMU_CLOCK=raw python3 scripts/verify_all.py)
 ```
 
 不假設公司帳號有sudo或網路：preflight後按安裝指南選已安裝、私有解壓或交IT離線安裝分支。

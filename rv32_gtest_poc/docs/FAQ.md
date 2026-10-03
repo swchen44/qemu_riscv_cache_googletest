@@ -95,7 +95,7 @@ GoogleTest的`TEST(...)`註冊會用到C++ static initialization。漏掉constru
 
 **必須分開看：完整test image、framework增量、ELF磁碟檔、靜態RAM，以及動態heap/stack peak。** 以下單位均為bytes；本次檔案可直接用`riscv-none-elf-size`重測。
 
-### A. 目前完整image實測
+### A. 歷史指定build的完整image實測
 
 | Image | text（含唯讀資料） | data | bss | data+bss | 含debug的ELF磁碟bytes |
 |---|---:|---:|---:|---:|---:|
@@ -103,6 +103,8 @@ GoogleTest的`TEST(...)`註冊會用到C++ static initialization。漏掉constru
 | FreeRTOS C harness，無GTest | 53588 | 1760 | 266960 | 268720 | 182652 |
 | FreeRTOS + GTest + FFF，6 tests | 549934 | 4292 | 275296 | 279588 | 4533160 |
 | MicroPython + GTest + FFF，11 tests | 670978 | 4272 | 537168 | 541440 | 5996988 |
+
+這張表記錄修正completion semaphore之前的歷史指定build，不是目前source的size保證；最新revision須重跑size，尤其FreeRTOS修復會改變text/BSS。
 
 不是「GoogleTest單體=535138 bytes」：這些包含產品/測試、FFF、GoogleTest、被linker保留的libstdc++/newlib、BSP glue等。ELF帶`-g` debug/symbol資料，因此磁碟4–6MB不代表需要4–6MB Flash或RAM。link map與實際LOAD segments才是判讀載入範圍的依據。
 

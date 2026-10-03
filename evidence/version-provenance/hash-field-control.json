@@ -1,0 +1,20 @@
+{
+  "fixed_tag": "v1.26.1",
+  "source_commit": "647c8b96cae7e202c7a020395b7cfe65e5b8ce04",
+  "control": "Same source/path/xPack compiler and flags; only MICROPY_GIT_HASH differs",
+  "variants": [
+    {
+      "git_hash_macro": "647c8b96cae7e202c7a020395b7cfe65e5b8ce04",
+      "elf_sha256": "5d634c496cb4c73b6545afd0d68a6aa03987058b559b9b761b02d940e7411f8b",
+      "raw_load_sha256": "3985fd103f0700ba0ec7b2df2f9054b3ce7b0c5347d98303691bebb72357c1ea"
+    },
+    {
+      "git_hash_macro": "<no hash>",
+      "elf_sha256": "5d634c496cb4c73b6545afd0d68a6aa03987058b559b9b761b02d940e7411f8b",
+      "raw_load_sha256": "3985fd103f0700ba0ec7b2df2f9054b3ce7b0c5347d98303691bebb72357c1ea"
+    }
+  ],
+  "elf_identical": true,
+  "load_bytes_identical": true,
+  "scope": "RV32 reduced embed profile on Debian13; not a claim of identical binaries across paths or arbitrary profiles"
+}

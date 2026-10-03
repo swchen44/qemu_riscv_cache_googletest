@@ -18,4 +18,11 @@ case "$RV32_HOST_PROFILE" in
     ;;
   *) echo "Unknown RV32_HOST_PROFILE: $RV32_HOST_PROFILE" >&2; return 2 2>/dev/null || exit 2 ;;
 esac
-export QEMU RV32_HOST_PROFILE
+RV32_QEMU_CLOCK="${RV32_QEMU_CLOCK:-raw}"
+QEMU_CLOCK_ARGS=()
+case "$RV32_QEMU_CLOCK" in
+ raw) ;;
+ icount) QEMU_CLOCK_ARGS=(-icount shift=0,align=off,sleep=on) ;;
+ *) echo "Unknown RV32_QEMU_CLOCK: $RV32_QEMU_CLOCK" >&2; return 2 2>/dev/null || exit 2 ;;
+esac
+export QEMU RV32_HOST_PROFILE RV32_QEMU_CLOCK

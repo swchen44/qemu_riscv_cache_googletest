@@ -1,0 +1,9 @@
+PREFLIGHT_START freertos-preflight-positive-build
+freertos-preflight-positive-build PASS
+PREFLIGHT_START freertos-preflight-positive
+freertos-preflight-positive PASS
+PREFLIGHT_START freertos-preflight-negative-build
+freertos-preflight-negative-build PASS
+PREFLIGHT_START freertos-preflight-negative
+freertos-preflight-negative PASS
+FREERTOS_COMPLETION_BARRIER_PREFLIGHT_PASS

@@ -28,3 +28,7 @@
 stock QEMU不是產品cache/ILM/DLM timing simulator；GoogleTest ms不是產品latency。已知真板log921600 baud，但framing/driver待確認。不要承諾150ms或從本例大heap配置推論最小RAM。
 
 不要讀取/公開credentials、私人筆記、無關repo或不屬本實驗的材料；不要force-push或改repo visibility。後續GitHub發佈需使用者授權。此repo使用者授權不自動涵蓋其他repository。
+
+## 進入公司環境後先切斷public push路徑
+
+本repo是public研究實驗；加入公司真實code前，先檢查remote並改成授權內部remote或停用外網push。Source ZIP本身沒有Git history/remote，可在內網建立新repo。不能因本次user允許push公開實驗，就自動把公司source、真實log/trace或credentials送回這裡。除非新的明確授權與公司政策允許，預設所有公司資料留內網。

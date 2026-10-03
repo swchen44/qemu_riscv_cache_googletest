@@ -1,0 +1,1 @@
+MicroPython: raw clock; first-stage RV32/FreeRTOS: fixed icount shift=0,align=off,sleep=on

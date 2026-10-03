@@ -52,3 +52,7 @@
 ## 不在本次承諾範圍
 
 完整MicroPython上游suite、任意host OS、公司產品已移植、任意多task共享GTest/FFF、新libc thread-safety、真core cache模型、150ms保證、bit-identical binary。
+
+## 2026-10-03移植後發現的測試同步/clock問題
+
+Ubuntu巢狀TCG揭露了兩個先前Debian快速執行未暴露的條件：先是supervisor用固定sleep當producer完成證據（改為真semaphore barrier）；再是raw virtual clock的100tick期限早於producer開始。診斷固定記錄return/tick/task event，保留原嚴格assert，不以加sleep或拉長deadline混成成功。功能性replay另評估明示icount配置；raw-clock觀察與真機性能研究分開保存。正式完整matrix與最終flags以新log/commit為準。

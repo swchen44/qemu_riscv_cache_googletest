@@ -1,0 +1,28 @@
+QEMU_CLOCK_PROFILE=icount
+RV32 FreeRTOS actual kernel: demo profile rv32imac_zicsr / ilp32 / QEMU virt, NOT product timing model
+RV32 GoogleTest + FFF inside FreeRTOS supervisor task; no Linux
+Note: Google Test filter = *Negative*
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ProductTest
+[ RUN      ] ProductTest.DISABLED_NegativeOracleMustFail
+tests/product_test.cc:52: Failure
+Expected equality of these values:
+  12477 + 1
+    Which is: 12478
+  r.sum
+    Which is: 12477
+Intentional wrong expected value: runner must detect this failure
+
+[  FAILED  ] ProductTest.DISABLED_NegativeOracleMustFail (0 ms)
+[----------] 1 test from ProductTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] ProductTest.DISABLED_NegativeOracleMustFail
+
+ 1 FAILED TEST
+
+HARNESS_EXIT=1; EXPECTED_EXIT=1

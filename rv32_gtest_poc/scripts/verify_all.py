@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-import json,subprocess,pathlib,datetime,sys
+import json,subprocess,pathlib,datetime,sys,os
 root=pathlib.Path(__file__).resolve().parent.parent
+STEP_TIMEOUT=int(os.environ.get('VERIFY_TIMEOUT_SECONDS','120'))
+if STEP_TIMEOUT < 1: raise ValueError('VERIFY_TIMEOUT_SECONDS must be positive')
 (root/'evidence').mkdir(exist_ok=True)
 results=[]
 def run(name,cmd,want=0,contains=()):
  with open(root/'evidence'/f'{name}.log','w') as f:
-  try: r=subprocess.run(cmd,cwd=root,stdout=f,stderr=subprocess.STDOUT,timeout=120);rc=r.returncode
+  try: r=subprocess.run(cmd,cwd=root,stdout=f,stderr=subprocess.STDOUT,timeout=STEP_TIMEOUT);rc=r.returncode
   except subprocess.TimeoutExpired:rc=124
   f.write(f'\nHARNESS_EXIT={rc}; EXPECTED_EXIT={want}\n')
  text=(root/'evidence'/f'{name}.log').read_text()
@@ -24,5 +26,5 @@ try:
   run(label+'-negative-build',[builder,label+'-negative','-DINJECT_FAILURE'])
   run(label+'-negative',['scripts/run_qemu.sh',f'build/{label}-negative/firmware.elf'],1,['FAIL'])
 finally:
- (root/'evidence'/'results.json').write_text(json.dumps({'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'results':results},indent=2)+'\n')
+ (root/'evidence'/'results.json').write_text(json.dumps({'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'host_profile':os.environ.get('RV32_HOST_PROFILE','debian-13'),'qemu_clock_profile':os.environ.get('RV32_QEMU_CLOCK','raw'),'harness_step_timeout_seconds':STEP_TIMEOUT,'results':results},indent=2)+'\n')
 print('ALL EXPECTED POSITIVE AND NEGATIVE OUTCOMES VERIFIED')

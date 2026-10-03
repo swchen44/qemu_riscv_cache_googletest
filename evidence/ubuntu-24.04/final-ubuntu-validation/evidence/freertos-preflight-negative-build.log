@@ -1,0 +1,3 @@
+/work/projects/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: build/rtos-preflight-negative/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+  54764	   1752	 266976	 323492	  4efa4	build/rtos-preflight-negative/firmware.elf

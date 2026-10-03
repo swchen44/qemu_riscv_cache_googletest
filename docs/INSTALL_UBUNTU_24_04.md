@@ -11,18 +11,19 @@
 python3 scripts/prepare-ubuntu-sources.py .
 export RV32_HOST_PROFILE=ubuntu-24.04
 export QEMU=/usr/bin/qemu-system-riscv32
-(cd rv32_gtest_poc && python3 scripts/verify_all.py)
-(cd micropython_gtest_poc && python3 scripts/verify_all.py)
+(cd rv32_gtest_poc && RV32_QEMU_CLOCK=icount python3 scripts/verify_all.py)
+(cd micropython_gtest_poc && RV32_QEMU_CLOCK=raw python3 scripts/verify_all.py)
 ```
 
 Ubuntu profile確認/etc/os-release，不注入專案Debian LD_LIBRARY_PATH。不要從先前的Debian shell繼承該路徑。
 
 ## 狀態說明
 
-- 官方Ubuntu source/package metadata、版本、SHA與離線閉包正在準備。
-- PRoot userspace試驗因sandbox拒絕ptrace/execve而停止，這不是Ubuntu test pass。
-- 另以無KVM/無ptrace的純TCG完整Ubuntu VM嘗試實跑；成功/失敗以後續log更新，不預先標完成。
-- 若只能做ABI/static檢查，必須仍由內網真Ubuntu執行上述matrix才算Ubuntu驗收。
+- 官方121個Ubuntu binary依賴與62套/191檔對應source已實際下載驗SHA；Release發佈另列狀態。
+- 完整純TCG Ubuntu VM已離線安裝並實跑23/23步：15/icount與8/raw。原始log見evidence/ubuntu-24.04。
+- raw RTOS首wait曾timeout，保留失敗；正式功能命令必須明示icount，不將它當硬體cycle模型。
+- 慢巢狀TCG可明示export VERIFY_TIMEOUT_SECONDS=1800；這是外層harness等待，不改內層QEMU30秒或RTOS100tick。
+- PRoot因sandbox拒絕ptrace/execve而停止；最後成功使用另一允許的純TCG VM路線。
 
 ## 不假設公司帳號有root/sudo或網路
 
@@ -52,3 +53,11 @@ bash scripts/ubuntu/install-ubuntu-offline.sh --bundle-root "$B" --simulate
 ```
 
 Installer僅安裝lock列出的、已驗SHA的121個required packages，不掃描目錄順便裝多餘deb；PRoot probe不是required dependency。`fetch-locked.py --bundle-root "$B"`是外部允許聯網預備機才用的下載器。其`--include-all-sources`/`--include-tcg`/`--include-base`需bundle內有對應source/image/TCG manifests，不能只拿repo單一script便假定這些optional bytes存在。
+
+## 不碰OS的helper自我測試
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+五個測試只在暫存目錄放合成bytes，檢查explicit root、缺root、hash不符、path traversal與多餘未列檔案；不呼叫apt、不安裝、不連網、不需root。

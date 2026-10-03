@@ -37,3 +37,16 @@ GitHub的Source code(zip/tar.gz)是指定commit的Git內容快照，不包含Rel
 ## 內網權限分支
 
 沒有假設sudo/網路。已有prerequisites則直接驗收；xPack可私有解壓免root；Ubuntu.deb的system安裝交授權IT；QEMU私有解壓需完整依賴與另外驗證。具體分支見Ubuntu安裝指南。當地權限不足是明確blocker，不以安全設定變更或外網下載繞過。
+
+## Public與公司內網邊界
+
+此GitHub repo目前為public，只收合成範例、公開上游source與本次研究/測試文件。將其帶進公司並接入真實source後，不要沿用此public remote作寫入目的地。
+
+- 若用Source ZIP帶入，建立公司內部repo/remote，不額外添加外網push目的地。
+- 若用git clone帶入，先由當地授權操作者檢查`git remote -v`，改成公司內部remote或停用外網push，再加入公司code/log。
+- 公司source、真實payload/trace/log、內部地址、credentials、tokens均不可自動推回此public repo。不要把本次上傳公開實驗的授權延伸成公司code發佈許可。
+- 此處是操作邊界指引；本次沒有修改GitHub可見性、公司remote、帳號權限或安全設定。
+
+## 已封裝的四個required assets
+
+精確檔名/大小/SHA與放置方法見[release-assets.json](../manifests/release-assets.json)。四個檔案均已在工作環境封裝驗證；download_url為null時代表尚未發布，不可把候選清單當成遠端可下載證據。完成Release後應固定tag、source commit並逐個下載重驗。原生Ubuntu執行不需要下載外層TCG OS image；該image僅為可選驗證環境。

@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "status": "PASS_WITH_EXPLICIT_PROFILES",
+  "completed_utc": "2026-10-03T14:35:26Z",
+  "total_expected_steps": 23,
+  "passed_steps": 23,
+  "expected_negative_controls": 6,
+  "outer_vm_elapsed_seconds": 2794,
+  "environment": {
+    "target": "Ubuntu 24.04 amd64",
+    "reported_pretty_name": "Ubuntu 24.04.5 LTS",
+    "guest_kernel": "6.8.0-146-generic",
+    "own_ubuntu_guest_kernel": true,
+    "shared_host_kernel": false,
+    "physical_ubuntu_host_tested": false,
+    "outer_host": "Debian GNU/Linux 13, Linux 6.18.44, x86_64",
+    "outer_qemu": "10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+    "outer_accelerator": "tcg,thread=multi",
+    "outer_vcpus": 2,
+    "outer_ram_mib": 3072,
+    "guest_disk_gib": 10,
+    "network": "No guest NIC; no network during installation, preparation, or tests",
+    "host_mount_used": false,
+    "kvm_or_ptrace_used": false
+  },
+  "versions": {
+    "gcc_gpp": "13.3.0-6ubuntu2~24.04.1",
+    "make": "4.3",
+    "python": "3.12.3",
+    "inner_qemu": "1:8.2.2+ds-0ubuntu1.18",
+    "xpack_riscv_none_elf_gcc": "15.2.0-1",
+    "googletest": "1.15.2",
+    "fff": "1.1",
+    "freertos_kernel": "11.1.0",
+    "micropython": "1.26.1"
+  },
+  "suites": [
+    {
+      "name": "rv32_gtest_poc",
+      "host_profile": "ubuntu-24.04",
+      "inner_qemu_clock_profile": "icount",
+      "inner_qemu_extra_flags": [
+        "-icount",
+        "shift=0,align=off,sleep=on"
+      ],
+      "step_count": 15,
+      "status": "PASS",
+      "original_results_path": "final-ubuntu-validation/evidence/rv32_gtest_poc/results.json",
+      "original_results_sha256": "2ef75b761c7c42e6d165c677c26a482c21da9375304bbe9148571d6a87ee6222",
+      "results": [
+        {
+          "name": "host-build",
+          "command": [
+            "scripts/build_host.sh"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "host-pass",
+          "command": [
+            "build/host/product_tests"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "host-negative",
+          "command": [
+            "build/host/product_tests",
+            "--gtest_also_run_disabled_tests",
+            "--gtest_filter=*Negative*"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-build",
+          "command": [
+            "scripts/build_rtos.sh",
+            "rtos"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-pass",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/rtos/firmware.elf"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-negative-build",
+          "command": [
+            "scripts/build_rtos.sh",
+            "rtos-negative",
+            "-DINJECT_FAILURE"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-negative",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/rtos-negative/firmware.elf"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        },
+        {
+          "name": "bare-gtest-build",
+          "command": [
+            "scripts/build_bare_gtest.sh",
+            "bare-gtest"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "bare-gtest-pass",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/bare-gtest/firmware.elf"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "bare-gtest-negative-build",
+          "command": [
+            "scripts/build_bare_gtest.sh",
+            "bare-gtest-negative",
+            "-DINJECT_FAILURE"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "bare-gtest-negative",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/bare-gtest-negative/firmware.elf"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-gtest-build",
+          "command": [
+            "scripts/build_rtos_gtest.sh",
+            "rtos-gtest"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-gtest-pass",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/rtos-gtest/firmware.elf"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-gtest-negative-build",
+          "command": [
+            "scripts/build_rtos_gtest.sh",
+            "rtos-gtest-negative",
+            "-DINJECT_FAILURE"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rtos-gtest-negative",
+          "command": [
+            "scripts/run_qemu.sh",
+            "build/rtos-gtest-negative/firmware.elf"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "micropython_gtest_poc",
+      "host_profile": "ubuntu-24.04",
+      "inner_qemu_clock_profile": "raw",
+      "inner_qemu_extra_flags": [],
+      "step_count": 8,
+      "status": "PASS",
+      "original_results_path": "final-ubuntu-validation/evidence/micropython_gtest_poc/results.json",
+      "original_results_sha256": "7a96980e2aedb5cc6d3d8cf3c6b7999b8be45a4767b93bbc3f736a13201835f5",
+      "results": [
+        {
+          "name": "prepare",
+          "command": [
+            "python3",
+            "scripts/prepare.py"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "host-build",
+          "command": [
+            "python3",
+            "scripts/build.py",
+            "host"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "host-pass",
+          "command": [
+            "build/host/micropython_tests"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "host-negative",
+          "command": [
+            "build/host/micropython_tests",
+            "--gtest_also_run_disabled_tests",
+            "--gtest_filter=*Negative*"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        },
+        {
+          "name": "rv32-build",
+          "command": [
+            "python3",
+            "scripts/build.py",
+            "rv32"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rv32-pass",
+          "command": [
+            "scripts/run_rv32.sh"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rv32-negative-build",
+          "command": [
+            "python3",
+            "scripts/build.py",
+            "rv32",
+            "negative"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "rv32-negative",
+          "command": [
+            "scripts/run_rv32.sh",
+            "rv32-negative"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "test_cases": [
+    {
+      "suite": "rv32_gtest_poc",
+      "run": "host-pass",
+      "passed": 5
+    },
+    {
+      "suite": "rv32_gtest_poc",
+      "run": "bare-gtest-pass",
+      "passed": 5
+    },
+    {
+      "suite": "rv32_gtest_poc",
+      "run": "rtos-gtest-pass",
+      "passed": 6
+    },
+    {
+      "suite": "micropython_gtest_poc",
+      "run": "host-pass",
+      "passed": 11
+    },
+    {
+      "suite": "micropython_gtest_poc",
+      "run": "rv32-pass",
+      "passed": 11
+    }
+  ],
+  "micro_python_compiled_c_sources": {
+    "host": 132,
+    "rv32": 134
+  },
+  "source_bindings": {
+    "demo_c_sha256": "888b43e2e99c501b10d60e415e8c9946b831c9b6cb3d3835ebbe36f6084c0279",
+    "micro_python_shared_test_sha256": "09653e3c43399c6fe3fc78432b439abbd62e5ef759ddd6d82a4530990cc9e62c",
+    "first_stage_shared_test_sha256": "5148c94846c6e296561ae5f0f366e61f5608bd70b5be54e33f162a3962889010",
+    "payload_sha256_manifest_sha256": "a8286a26a4ea1240def08186e2ee8fbc3529299a74af643cb3d8814f56490b87",
+    "payload_archive_sha256": "944aafd49a524837a26728333d45ba28e7d61433a741a2edbc83c15df201b3ad"
+  },
+  "harness_limits": {
+    "tested_outer_step_timeout_seconds": 1800,
+    "original_defaults_seconds": {
+      "first_stage": 120,
+      "micropython": 180
+    },
+    "inner_qemu_timeout_seconds": 30,
+    "rtos_notification_timeout_ticks": 100,
+    "rtos_notification_expected_return": 1,
+    "trace_enabled_in_final_matrix": false
+  },
+  "offline_dependencies": {
+    "required_ubuntu_debs": 121,
+    "required_deb_bytes": 164806852,
+    "corresponding_source_packages": 62,
+    "corresponding_source_files": 191,
+    "corresponding_source_bytes": 733960033,
+    "source_bundle_sha256": "40ca91cd27453ab77831eafe13917fb4e075d36b1f1a49c477e8912037e67239",
+    "optional_proot_probe_required": false
+  },
+  "retained_failures": [
+    {
+      "stage": "PRoot userspace attempt",
+      "result": "BLOCKED",
+      "reason": "ptrace(TRACEME)/execve EPERM; no bypass attempted"
+    },
+    {
+      "stage": "initial offline installer",
+      "result": "FAIL",
+      "reason": "APT --no-download local pathname/cache issue; explicit archive cache fixed and actual install passed"
+    },
+    {
+      "stage": "raw FreeRTOS original completion logic",
+      "result": "FAIL",
+      "reason": "processed=8, produced/preemptions=7; replaced tick delay with completion semaphore"
+    },
+    {
+      "stage": "raw FreeRTOS after barrier",
+      "result": "FAIL",
+      "reason": "100-tick notification deadline expired; traced return=0 before first send/notify. Raw default clock is not claimed fixed."
+    }
+  ],
+  "limitations": [
+    "This is an Ubuntu kernel/userspace VM acceptance run, not the corporate physical host.",
+    "The first-stage RISC-V suite is accepted only in explicitly selected fixed-icount functional mode; MicroPython RISC-V is accepted in raw mode.",
+    "Fixed icount and emulator milliseconds are not calibrated chip cycles, cache behavior, or hardware performance.",
+    "Raw timing traces cannot separately attribute host scheduling versus JIT overhead; tracing may perturb raw timing.",
+    "Original per-project results.json files are preserved; this aggregate binds explicit profiles to the logged runs."
+  ],
+  "micropython_generated_version_header": {
+    "tag": "v1.26.1",
+    "git_hash": "<no hash>",
+    "build_date": "2026-10-03",
+    "git_executable_in_guest": null,
+    "evidence": "final-ubuntu-validation/micropython-provenance/provenance/micropython-version-provenance.json",
+    "read_only_collection_preserved_all_three_binary_hashes": true,
+    "note": "These are the original generated headers from the accepted matrix, not rewritten to the later explicit full-commit pin."
+  },
+  "version_pin_followup_control": {
+    "scope": "RV32 reduced embed profile on Debian13; not a claim of identical binaries across paths or arbitrary profiles",
+    "fixed_tag": "v1.26.1",
+    "source_commit": "647c8b96cae7e202c7a020395b7cfe65e5b8ce04",
+    "elf_identical": true,
+    "load_bytes_identical": true,
+    "evidence": "version-pin-control-debian/hash-field-control.json",
+    "note": "Independent Debian13 same-profile HASH-only control; not a rewritten Ubuntu header or a claim of another Ubuntu rebuild."
+  }
+}

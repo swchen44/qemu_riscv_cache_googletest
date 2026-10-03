@@ -1,0 +1,16 @@
+host-build PASS
+host-pass PASS
+host-negative PASS
+rtos-build PASS
+rtos-pass PASS
+rtos-negative-build PASS
+rtos-negative PASS
+bare-gtest-build PASS
+bare-gtest-pass PASS
+bare-gtest-negative-build PASS
+bare-gtest-negative PASS
+rtos-gtest-build PASS
+rtos-gtest-pass PASS
+rtos-gtest-negative-build PASS
+rtos-gtest-negative PASS
+ALL EXPECTED POSITIVE AND NEGATIVE OUTCOMES VERIFIED

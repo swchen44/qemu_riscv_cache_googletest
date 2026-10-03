@@ -2,7 +2,7 @@
 
 兩個專案evidence保留真實命令/exit/count/size及失敗紀錄。公開版將不影響判讀的雲端絕對workspace路徑改成`${REPO}`/`${WORKSPACE}`、host識別名改cloud-host；數值與測試結果不改。這是公開文件處理，不是重新產生測試通過結果。
 
-歷史Debian13完整矩陣已通過；此次從保存archive還原到新cloud再跑15步及8步也通過。這仍不是從GitHub新commit下載後的證明；後者待首次推送後獨立執行並新增紀錄。Ubuntu24.04另以完整TCG VM測試中，boot成功不能替代完整matrix。
+歷史Debian13完整矩陣已通過；此次從保存archive還原到新cloud再跑15步及8步也通過。GitHub新clone驗證另見下節。Ubuntu24.04完整TCG VM已正常build實跑23/23步，詳見evidence/ubuntu-24.04：15/icount、8/raw，並保存修復前與raw-clock失敗。
 
 原始source archives保持其先前SHA；repo內SOURCE_SHA256SUMS會依本次受控runner/docs修改重新建立。正常GTest counts必須5/6/11，負例必須exit1，timeout不是pass。
 

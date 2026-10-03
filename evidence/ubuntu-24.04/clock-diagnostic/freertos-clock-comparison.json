@@ -1,0 +1,100 @@
+[
+  {
+    "name": "clock-positive-build",
+    "clock": "raw",
+    "command": [
+      "scripts/build_rtos.sh",
+      "rtos-clock-diagnostic",
+      "-DRTOS_DIAGNOSTICS"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "status": "PASS",
+    "elapsed_seconds": 27.081
+  },
+  {
+    "name": "clock-raw-positive-1",
+    "clock": "raw",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic/firmware.elf"
+    ],
+    "exit": 1,
+    "expected_exit": 0,
+    "status": "FAIL",
+    "elapsed_seconds": 2.232
+  },
+  {
+    "name": "clock-icount-positive-1",
+    "clock": "icount",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic/firmware.elf"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "status": "PASS",
+    "elapsed_seconds": 1.453
+  },
+  {
+    "name": "clock-icount-positive-2",
+    "clock": "icount",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic/firmware.elf"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "status": "PASS",
+    "elapsed_seconds": 1.661
+  },
+  {
+    "name": "clock-icount-positive-3",
+    "clock": "icount",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic/firmware.elf"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "status": "PASS",
+    "elapsed_seconds": 1.402
+  },
+  {
+    "name": "clock-negative-build",
+    "clock": "raw",
+    "command": [
+      "scripts/build_rtos.sh",
+      "rtos-clock-diagnostic-negative",
+      "-DRTOS_DIAGNOSTICS -DINJECT_FAILURE"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "status": "PASS",
+    "elapsed_seconds": 21.768
+  },
+  {
+    "name": "clock-raw-negative",
+    "clock": "raw",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic-negative/firmware.elf"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "status": "PASS",
+    "elapsed_seconds": 1.532
+  },
+  {
+    "name": "clock-icount-negative",
+    "clock": "icount",
+    "command": [
+      "scripts/run_qemu.sh",
+      "build/rtos-clock-diagnostic-negative/firmware.elf"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "status": "PASS",
+    "elapsed_seconds": 4.05
+  }
+]

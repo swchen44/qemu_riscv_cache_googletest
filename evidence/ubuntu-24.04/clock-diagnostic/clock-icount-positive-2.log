@@ -1,0 +1,63 @@
+QEMU_CLOCK_PROFILE=icount shift=0 align=off sleep=on
+RV32 FreeRTOS actual kernel: demo profile rv32imac_zicsr / ilp32 / QEMU virt, NOT product timing model
+RTOS evidence: application_tasks=3 produced=8 processed=8 immediate_priority_preemptions=8 queue_timeouts=1 tick=13
+TRACE events=58 dropped=0 tasks=1:producer,2:worker,3:supervisor events=1:send_before,2:send_after,3:receive,4:notify_before,5:notify_after,6:wait_before,7:wait_after,8:producer_done,9:supervisor_done
+TRACE seq=0 task=3 event=6 item=0 value=0 tick=0
+TRACE seq=1 task=1 event=1 item=0 value=0 tick=5
+TRACE seq=2 task=2 event=3 item=0 value=0 tick=5
+TRACE seq=3 task=2 event=4 item=0 value=1 tick=5
+TRACE seq=4 task=3 event=7 item=0 value=1 tick=5
+TRACE seq=5 task=3 event=6 item=1 value=0 tick=5
+TRACE seq=6 task=2 event=5 item=0 value=1 tick=5
+TRACE seq=7 task=1 event=2 item=0 value=1 tick=5
+TRACE seq=8 task=1 event=1 item=1 value=1 tick=6
+TRACE seq=9 task=2 event=3 item=1 value=1 tick=6
+TRACE seq=10 task=2 event=4 item=1 value=2 tick=6
+TRACE seq=11 task=3 event=7 item=1 value=1 tick=6
+TRACE seq=12 task=3 event=6 item=2 value=0 tick=6
+TRACE seq=13 task=2 event=5 item=1 value=2 tick=6
+TRACE seq=14 task=1 event=2 item=1 value=2 tick=6
+TRACE seq=15 task=1 event=1 item=2 value=2 tick=7
+TRACE seq=16 task=2 event=3 item=2 value=2 tick=7
+TRACE seq=17 task=2 event=4 item=2 value=3 tick=7
+TRACE seq=18 task=3 event=7 item=2 value=1 tick=7
+TRACE seq=19 task=3 event=6 item=3 value=0 tick=7
+TRACE seq=20 task=2 event=5 item=2 value=3 tick=7
+TRACE seq=21 task=1 event=2 item=2 value=3 tick=7
+TRACE seq=22 task=1 event=1 item=3 value=3 tick=8
+TRACE seq=23 task=2 event=3 item=3 value=3 tick=8
+TRACE seq=24 task=2 event=4 item=3 value=4 tick=8
+TRACE seq=25 task=3 event=7 item=3 value=1 tick=8
+TRACE seq=26 task=3 event=6 item=4 value=0 tick=8
+TRACE seq=27 task=2 event=5 item=3 value=4 tick=8
+TRACE seq=28 task=1 event=2 item=3 value=4 tick=8
+TRACE seq=29 task=1 event=1 item=4 value=4 tick=9
+TRACE seq=30 task=2 event=3 item=4 value=4 tick=9
+TRACE seq=31 task=2 event=4 item=4 value=5 tick=9
+TRACE seq=32 task=3 event=7 item=4 value=1 tick=9
+TRACE seq=33 task=3 event=6 item=5 value=0 tick=9
+TRACE seq=34 task=2 event=5 item=4 value=5 tick=9
+TRACE seq=35 task=1 event=2 item=4 value=5 tick=9
+TRACE seq=36 task=1 event=1 item=5 value=5 tick=10
+TRACE seq=37 task=2 event=3 item=5 value=5 tick=10
+TRACE seq=38 task=2 event=4 item=5 value=6 tick=10
+TRACE seq=39 task=3 event=7 item=5 value=1 tick=10
+TRACE seq=40 task=3 event=6 item=6 value=0 tick=10
+TRACE seq=41 task=2 event=5 item=5 value=6 tick=10
+TRACE seq=42 task=1 event=2 item=5 value=6 tick=10
+TRACE seq=43 task=1 event=1 item=6 value=6 tick=11
+TRACE seq=44 task=2 event=3 item=6 value=6 tick=11
+TRACE seq=45 task=2 event=4 item=6 value=7 tick=11
+TRACE seq=46 task=3 event=7 item=6 value=1 tick=11
+TRACE seq=47 task=3 event=6 item=7 value=0 tick=11
+TRACE seq=48 task=2 event=5 item=6 value=7 tick=11
+TRACE seq=49 task=1 event=2 item=6 value=7 tick=11
+TRACE seq=50 task=1 event=1 item=7 value=7 tick=12
+TRACE seq=51 task=2 event=3 item=7 value=7 tick=12
+TRACE seq=52 task=2 event=4 item=7 value=8 tick=12
+TRACE seq=53 task=3 event=7 item=7 value=1 tick=12
+TRACE seq=54 task=2 event=5 item=7 value=8 tick=12
+TRACE seq=55 task=1 event=2 item=7 value=8 tick=12
+TRACE seq=56 task=1 event=8 item=8 value=8 tick=13
+TRACE seq=57 task=3 event=9 item=8 value=8 tick=13
+PASS: replay, queue block/wakeup, timeout, delay, priority preemption, notifications

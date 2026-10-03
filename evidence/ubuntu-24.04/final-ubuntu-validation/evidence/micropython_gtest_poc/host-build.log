@@ -1,0 +1,4 @@
+COMPILED_C_SOURCES=132
+OUTPUT=/work/projects/micropython_gtest_poc/build/host/micropython_tests
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

@@ -20,4 +20,9 @@
 詳細C++ linker、entry、memory與命令請見[FAQ](../rv32_gtest_poc/docs/FAQ.md)。
 
 15. **Ubuntu offline apt cache pathname**：保留--no-download時local.deb安裝遇Pathname to install is not absolute；明確指定`Dir::Cache::archives`到預載apt/archives後已跨過安裝階段。首輪失敗不刪除。
-16. **FreeRTOS supervisor過早檢查producer計數**：worker八次notification不代表低priority producer已從最後xQueueSend返回；固定delay2在巢狀TCG暴露produced/preemptions=7而processed=8。改用producer完成後give的binary semaphore，supervisor真take；原8/8/8/1嚴格assert全保留，不靠加sleep或放寬oracle。舊Library/source archive是修復前Debian歷史snapshot；內網請用最終repo/Release commit。
+16. **FreeRTOS supervisor過早檢查producer計數**：worker八次notification不代表低priority producer已從最後xQueueSend返回；固定delay2在巢狀TCG暴露produced/preemptions=7而processed=8。改用producer完成後give的binary semaphore，supervisor真take；原8/8/8/1嚴格assert全保留，不靠加sleep或放寬oracle。先前交付的source archive是修復前Debian歷史snapshot；內網請用最終repo/Release commit。
+17. **巢狀TCG raw-clock 100tick timeout**：加completion barrier後，診斷顯示首wait tick37→148回0，當時processed/produced為0；首send tick272、首notify tick310，後7次return=1。這不是通知合併>1；期限在工作開始前已過。相同diagnostic ELF採固定icount後3次正例成功；完整normal-build驗收另列。Trace不能分辨host scheduling/JIT各占比，也不代表raw-clock修好了，更不是硬體cycle/cache模型。
+18. **把public研究remote帶進公司後仍繼續push**：此repo只授權公開實驗/source/研究。接公司code前要改內部remote或停用外網push；不要把真實公司source/log/trace/credentials沿用原origin推回來。本次未改任何repo visibility或公司設定。
+
+19. **MicroPython tarball拾到外層handoff repo的Git版本**：新clone曾在generated mpversion.h看到9f9e8f4-dirty，雖vendor bytes/commit正確。官方makeversionhdr支援MICROPY_GIT_TAG/HASH；prepare從已驗SHA的lock顯式傳v1.26.1/647c8b...，不改upstream interpreter或test assertions，讓runtime metadata不混入handoff repo commit。原輸入log保留，後續版本記錄此metadata-only差異。
+20. **把手動修改只留在vendor/generated**：prepare會從鎖定archive重新生成這些目錄；未保存的修改可能被覆蓋。公司code/patch要在自己的受控source tree保存，先commit或另存patch，再明確套用；不要把私有改動塞回公開上游archive或上傳public repo。

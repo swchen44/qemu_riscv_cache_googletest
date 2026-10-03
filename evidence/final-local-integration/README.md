@@ -1,0 +1,1 @@
+Integration run on Debian13, first-stage15/icount and MicroPython8/raw, plus five isolated bundle verifier tests. Uses the delivered profile/timeout metadata interface and pinned MicroPython tag/hash preparation. Dependencies are locked local cache, not a Release download verification. Historical Ubuntu original results remain separate.

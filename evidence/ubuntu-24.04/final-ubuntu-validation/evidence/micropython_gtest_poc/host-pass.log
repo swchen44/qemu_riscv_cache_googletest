@@ -1,0 +1,37 @@
+Real MicroPython 1.26.1 interpreter + GoogleTest + FFF platform stdout seam
+[==========] Running 11 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 11 tests from MicroPythonTest
+[ RUN      ] MicroPythonTest.ParserArithmeticPrecedence
+[       OK ] MicroPythonTest.ParserArithmeticPrecedence (11 ms)
+[ RUN      ] MicroPythonTest.FunctionsRecursionAndBytecode
+[       OK ] MicroPythonTest.FunctionsRecursionAndBytecode (5 ms)
+[ RUN      ] MicroPythonTest.ListDictComprehensionAndMutation
+[       OK ] MicroPythonTest.ListDictComprehensionAndMutation (5 ms)
+[ RUN      ] MicroPythonTest.MpzBigIntegerBeyondRv32Word
+[       OK ] MicroPythonTest.MpzBigIntegerBeyondRv32Word (3 ms)
+[ RUN      ] MicroPythonTest.PythonExceptionCatchAndFinally
+[       OK ] MicroPythonTest.PythonExceptionCatchAndFinally (2 ms)
+[ RUN      ] MicroPythonTest.SyntaxErrorThenInterpreterRecovers
+[       OK ] MicroPythonTest.SyntaxErrorThenInterpreterRecovers (0 ms)
+[ RUN      ] MicroPythonTest.RuntimeTypeErrorThenInterpreterRecovers
+[       OK ] MicroPythonTest.RuntimeTypeErrorThenInterpreterRecovers (1 ms)
+[ RUN      ] MicroPythonTest.GlobalsObjectsSurviveExplicitGc
+[       OK ] MicroPythonTest.GlobalsObjectsSurviveExplicitGc (2 ms)
+[ RUN      ] MicroPythonTest.AllocationChurnCollectsAndKeepsRoots
+[       OK ] MicroPythonTest.AllocationChurnCollectsAndKeepsRoots (11 ms)
+[ RUN      ] MicroPythonTest.RealPrintUsesFffPlatformBoundary
+[       OK ] MicroPythonTest.RealPrintUsesFffPlatformBoundary (1 ms)
+[ RUN      ] MicroPythonTest.IndependentFixtureStartsWithoutPreviousGlobals
+[       OK ] MicroPythonTest.IndependentFixtureStartsWithoutPreviousGlobals (0 ms)
+[ DISABLED ] MicroPythonTest.DISABLED_NegativeOracleMustFail
+[----------] 11 tests from MicroPythonTest (48 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 1 test suite ran. (53 ms total)
+[  PASSED  ] 11 tests.
+
+  YOU HAVE 1 DISABLED TEST
+
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

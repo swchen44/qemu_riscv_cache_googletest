@@ -1,0 +1,25 @@
+Real MicroPython 1.26.1 interpreter + GoogleTest + FFF platform stdout seam
+Note: Google Test filter = *Negative*
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MicroPythonTest
+[ RUN      ] MicroPythonTest.DISABLED_NegativeOracleMustFail
+/work/projects/micropython_gtest_poc/tests/interpreter_test.cc:19: Failure
+Expected equality of these values:
+  expected
+    Which is: 43
+  value
+    Which is: 42
+
+[  FAILED  ] MicroPythonTest.DISABLED_NegativeOracleMustFail (3 ms)
+[----------] 1 test from MicroPythonTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] MicroPythonTest.DISABLED_NegativeOracleMustFail
+
+ 1 FAILED TEST
+
+HARNESS_EXIT=1; EXPECTED_EXIT=1

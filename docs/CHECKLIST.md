@@ -15,12 +15,12 @@
 
 - [x] 目標repo/既有history核對，只操作qemu_riscv_cache_googletest
 - [x] 使用者確認Ubuntu24.04 x86-64
-- [ ] Ubuntu24.04 userspace實際matrix PASS（待新證據）
-- [ ] Ubuntu官方依賴版本/URL/hash/license完整鎖定
+- [x] Ubuntu24.04完整VM normal matrix 23/23 PASS（15/icount、8/raw）；原始證據與raw失敗保留
+- [x] Ubuntu121 binary依賴、62套對應source的版本/URL/hash/license完整鎖定並下載
 - [ ] Release工具包完成上傳，hash與size確認
 - [x] main source commit實際遠端可見；每commit含Why/What/Test
 - [x] 從遠端9f9e8f4新clone，source/dependency hashes通過（dependencies為固定local cache）
-- [x] 遠端source於Debian13重跑host/RV32/FreeRTOS/MicroPython 15+8步全PASS；Ubuntu另外待驗
+- [x] 遠端source於Debian13重跑host/RV32/FreeRTOS/MicroPython 15+8步全PASS；Ubuntu23步另有明示profile證據
 - [ ] 離線必帶清單完整且不依賴Library/private links
 
 ## 帶入內網前

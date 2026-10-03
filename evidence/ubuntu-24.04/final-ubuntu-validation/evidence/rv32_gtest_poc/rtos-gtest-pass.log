@@ -1,0 +1,34 @@
+QEMU_CLOCK_PROFILE=icount
+RV32 FreeRTOS actual kernel: demo profile rv32imac_zicsr / ilp32 / QEMU virt, NOT product timing model
+RV32 GoogleTest + FFF inside FreeRTOS supervisor task; no Linux
+[==========] Running 6 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from ProductTest
+[ RUN      ] ProductTest.DeterministicReplay
+[       OK ] ProductTest.DeterministicReplay (0 ms)
+[ RUN      ] ProductTest.RejectsInvalidInputs
+[       OK ] ProductTest.RejectsInvalidInputs (0 ms)
+[ RUN      ] ProductTest.FffReadFailureDoesNotWrite
+[       OK ] ProductTest.FffReadFailureDoesNotWrite (0 ms)
+[ RUN      ] ProductTest.FffAdapterCapturesOutputAndOrder
+[       OK ] ProductTest.FffAdapterCapturesOutputAndOrder (0 ms)
+[ RUN      ] ProductTest.FffRejectsOversizedDriverReply
+[       OK ] ProductTest.FffRejectsOversizedDriverReply (0 ms)
+[ DISABLED ] ProductTest.DISABLED_NegativeOracleMustFail
+[----------] 5 tests from ProductTest (0 ms total)
+
+[----------] 1 test from FreeRtosBehavior
+[ RUN      ] FreeRtosBehavior.QueueTimeoutWakeupDelayPriorityAndNotifications
+RTOS evidence: application_tasks=3 produced=8 processed=8 immediate_priority_preemptions=8 queue_timeouts=1 tick=13
+PASS: replay, queue block/wakeup, timeout, delay, priority preemption, notifications
+[       OK ] FreeRtosBehavior.QueueTimeoutWakeupDelayPriorityAndNotifications (12 ms)
+[----------] 1 test from FreeRtosBehavior (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 6 tests from 2 test suites ran. (12 ms total)
+[  PASSED  ] 6 tests.
+
+  YOU HAVE 1 DISABLED TEST
+
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

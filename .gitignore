@@ -233,3 +233,7 @@ __marimo__/
 **/vendor/micropython-1.26.1/
 toolchain_sources/
 release-assets/
+qemu_sources/
+rv32_gtest_poc/licenses/xpack-components/
+rv32_gtest_poc/vendor/qemu_*.dsc
+rv32_gtest_poc/vendor/qemu_*.tar.xz
