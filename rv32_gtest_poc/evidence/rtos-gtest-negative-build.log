@@ -1,0 +1,5 @@
+${REPO}/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: build/rtos-gtest-negative/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 549986	   4292	 275296	 829574	  ca886	build/rtos-gtest-negative/firmware.elf
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

@@ -1,0 +1,6 @@
+80000062 T gc_collect
+8001a52c T interpreter_exec
+80004c4c T mp_compile
+80018fb8 T mp_execute_bytecode
+8000d694 T mp_obj_new_dict
+800160d8 T mp_parse

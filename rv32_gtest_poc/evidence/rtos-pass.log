@@ -1,0 +1,5 @@
+RV32 FreeRTOS actual kernel: demo profile rv32imac_zicsr / ilp32 / QEMU virt, NOT product timing model
+RTOS evidence: application_tasks=3 produced=8 processed=8 immediate_priority_preemptions=8 queue_timeouts=1 tick=15
+PASS: replay, queue block/wakeup, timeout, delay, priority preemption, notifications
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

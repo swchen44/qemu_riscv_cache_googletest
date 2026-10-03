@@ -218,3 +218,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Reproduction caches and large release inputs (not source history)
+**/tools/debs/
+**/tools/qemu-root/
+**/tools/xpack-riscv-none-elf-gcc-15.2.0-1/
+**/tools/*.tar.gz
+**/generated/
+**/buildgen/
+**/src/build-embed/
+**/vendor/googletest-1.15.2/
+**/vendor/fff-1.1/
+**/vendor/FreeRTOS-Kernel-11.1.0/
+**/vendor/micropython-1.26.1/
+toolchain_sources/
+release-assets/

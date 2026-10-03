@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-03",
+  "host_baseline": "Debian 13 x86_64; see evidence/environment.txt for system shared libraries",
+  "downloads": [
+    {
+      "path": "vendor/googletest-v1.15.2.tar.gz",
+      "url": "https://codeload.github.com/google/googletest/tar.gz/refs/tags/v1.15.2",
+      "bytes": 872667,
+      "sha256": "7b42b4d6ed48810c5362c265a17faebe90dc2373c885e5216439d37927f02926",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "path": "vendor/fff-v1.1.tar.gz",
+      "url": "https://codeload.github.com/meekrosoft/fff/tar.gz/refs/tags/v1.1",
+      "bytes": 247995,
+      "sha256": "510efb70ab17a0035affd170960401921c9cc36ec81002ed00d2bfec6e08f385",
+      "license": "MIT"
+    },
+    {
+      "path": "vendor/FreeRTOS-Kernel-V11.1.0.tar.gz",
+      "url": "https://codeload.github.com/FreeRTOS/FreeRTOS-Kernel/tar.gz/refs/tags/V11.1.0",
+      "bytes": 2618623,
+      "sha256": "0e21928b3bcc4f9bcaf7333fb1c8c0299d97e2ec9e13e3faa2c5a7ac8a3bc573",
+      "license": "MIT"
+    },
+    {
+      "path": "tools/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz",
+      "url": "https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz",
+      "bytes": 433494794,
+      "sha256": "aaaa8060c914851a3e5ee1ba82cc3d6f80972f90638a05c6e823a37557a33758",
+      "license": "GCC GPL-3.0 with runtime exceptions; components see licenses/xpack-components"
+    },
+    {
+      "path": "tools/debs/qemu-system-riscv_10.0.13+ds-0+deb13u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu-system-riscv_10.0.13+ds-0+deb13u1_amd64.deb",
+      "bytes": 7630948,
+      "sha256": "80effad6aa07c09a7532e1b731c04ec9a32c545c2b9597320ec16ae59d2f34a2",
+      "version": "1:10.0.13+ds-0+deb13u1",
+      "package": "qemu-system-riscv",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/qemu-system-common_10.0.13+ds-0+deb13u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu-system-common_10.0.13+ds-0+deb13u1_amd64.deb",
+      "bytes": 1000628,
+      "sha256": "3a99dc23c42c66bb7e96dc1f2ba12b1797d154a472fbdb1cfcd822d9fb69e85b",
+      "version": "1:10.0.13+ds-0+deb13u1",
+      "package": "qemu-system-common",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/qemu-system-data_10.0.13+ds-0+deb13u1_all.deb",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu-system-data_10.0.13+ds-0+deb13u1_all.deb",
+      "bytes": 2144176,
+      "sha256": "a0e03c526cc09d4c2ab20aa19a8c12e916cdc49a170acb16a6563c28f70eafd3",
+      "version": "1:10.0.13+ds-0+deb13u1",
+      "package": "qemu-system-data",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/qemu-user_10.0.13+ds-0+deb13u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu-user_10.0.13+ds-0+deb13u1_amd64.deb",
+      "bytes": 71089852,
+      "sha256": "ca6ede739327a20ae5a3498230c8a3a9a072c586e131bc6bcc1201eb1725e336",
+      "version": "1:10.0.13+ds-0+deb13u1",
+      "package": "qemu-user",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libfdt1_1.7.2-2+b1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/d/device-tree-compiler/libfdt1_1.7.2-2+b1_amd64.deb",
+      "bytes": 19996,
+      "sha256": "8e37034d7864807ae2063efcc82fc79aad59069546212e6e0908ed67f9f7e107",
+      "version": "1.7.2-2+b1",
+      "package": "libfdt1",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libaio1t64_0.3.113-8+b1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/liba/libaio/libaio1t64_0.3.113-8+b1_amd64.deb",
+      "bytes": 14888,
+      "sha256": "490c8a2d116001a5f3b0a6d7a7aabf6a7b629366590dc5c3f75b078e931dd129",
+      "version": "0.3.113-8+b1",
+      "package": "libaio1t64",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libcapstone5_5.0.7-1~deb13u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/c/capstone/libcapstone5_5.0.7-1~deb13u1_amd64.deb",
+      "bytes": 778216,
+      "sha256": "775187a7be26bb0b076d1979a02163b943dbc13eb4adb0efc503223a03c75422",
+      "version": "5.0.7-1~deb13u1",
+      "package": "libcapstone5",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/liburing2_2.9-1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/libu/liburing/liburing2_2.9-1_amd64.deb",
+      "bytes": 26448,
+      "sha256": "4b589c00c7a51172aace2cb2fb3d3ff32daf86c644023126dcfcaa840cc941ea",
+      "version": "2.9-1",
+      "package": "liburing2",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libslirp0_4.8.0-1+deb13u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/libs/libslirp/libslirp0_4.8.0-1+deb13u1_amd64.deb",
+      "bytes": 66544,
+      "sha256": "6125698173f8be0d0de01ff897a0df3c5e50fb09f70238b26dd6574aaa0934e1",
+      "version": "4.8.0-1+deb13u1",
+      "package": "libslirp0",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libvdeplug2t64_4.0.1-5.1+b1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/v/vdeplug4/libvdeplug2t64_4.0.1-5.1+b1_amd64.deb",
+      "bytes": 28456,
+      "sha256": "01291e2c8e28e91eac6b59c983a3a44e29ad0ddb8622699fbb84cbd5f26334a4",
+      "version": "4.0.1-5.1+b1",
+      "package": "libvdeplug2t64",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libpmem1_1.13.1-1.1+b1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/p/pmdk/libpmem1_1.13.1-1.1+b1_amd64.deb",
+      "bytes": 91708,
+      "sha256": "7d972d6958e915ce602e4b90debc6b4b91a01dfea1fe003d0b013756e7d9d863",
+      "version": "1.13.1-1.1+b1",
+      "package": "libpmem1",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libbpf1_1.5.0-3_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/libb/libbpf/libbpf1_1.5.0-3_amd64.deb",
+      "bytes": 168832,
+      "sha256": "04c96ead3024888d80d08c8d08cc8cf4589f4614627acc69519f87ffb5adc1c2",
+      "version": "1:1.5.0-3",
+      "package": "libbpf1",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libbrlapi0.8_6.7-3.1+deb13u3_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/b/brltty/libbrlapi0.8_6.7-3.1+deb13u3_amd64.deb",
+      "bytes": 92960,
+      "sha256": "d8767805735bfae0edbe793fc8b6f6266ac9e55bec88c3d36b567c41b6438ca2",
+      "version": "6.7-3.1+deb13u3",
+      "package": "libbrlapi0.8",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libcacard0_2.8.0-3+b2_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/libc/libcacard/libcacard0_2.8.0-3+b2_amd64.deb",
+      "bytes": 90904,
+      "sha256": "1d6a8d17b893e54dfea8fe78df16c9a8ab4a6e626f9312881784592d480d9317",
+      "version": "1:2.8.0-3+b2",
+      "package": "libcacard0",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libusbredirparser1t64_0.15.0-1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/u/usbredir/libusbredirparser1t64_0.15.0-1_amd64.deb",
+      "bytes": 19560,
+      "sha256": "4b039802dac140bae5a6f3fb6341eeeb9ea8c3e4d7b95ad36a07a8c28572f177",
+      "version": "0.15.0-1",
+      "package": "libusbredirparser1t64",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libndctl6_81-1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/n/ndctl/libndctl6_81-1_amd64.deb",
+      "bytes": 62312,
+      "sha256": "fe60a05d42e61cb9f49a90b872aa5ca569363b13459ee0d405243c37a7de7c93",
+      "version": "81-1",
+      "package": "libndctl6",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "tools/debs/libdaxctl1_81-1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/n/ndctl/libdaxctl1_81-1_amd64.deb",
+      "bytes": 22188,
+      "sha256": "6296eb5c976743ba0defb7a061ef081238ca072cf569c6bb96fd3f9095c58a30",
+      "version": "81-1",
+      "package": "libdaxctl1",
+      "license": "See .deb usr/share/doc/*/copyright"
+    },
+    {
+      "path": "vendor/qemu_10.0.13+ds-0+deb13u1.dsc",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.dsc",
+      "bytes": 12462,
+      "sha256": "a426c892e5369058c3423816c8625bc8010bb5a58ece57261f62b64ee4d765ad",
+      "license": "QEMU GPL-2.0 and component-specific licenses; Debian packaging notices retained"
+    },
+    {
+      "path": "vendor/qemu_10.0.13+ds.orig.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds.orig.tar.xz",
+      "bytes": 40010016,
+      "sha256": "6a0888e806c2ffc0c5f0733e974f9aea55491950d3c47c98669c8b236dde59ae",
+      "license": "QEMU GPL-2.0 and component-specific licenses; Debian packaging notices retained"
+    },
+    {
+      "path": "vendor/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz",
+      "bytes": 156096,
+      "sha256": "da73c092f5684c551b0334d675eb16a3dec91e1edea94759cfb1102fa4a0364e",
+      "license": "QEMU GPL-2.0 and component-specific licenses; Debian packaging notices retained"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+In file included from ${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:32:
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/mpconfig.h:2104:32: error: ‘MICROPY_PY_SYS_PLATFORM’ undeclared here (not in a function); did you mean ‘MICROPY_PY_PLATFORM’?
+ 2104 | #define MICROPY_BANNER_MACHINE MICROPY_PY_SYS_PLATFORM " [" MICROPY_PLATFORM_COMPILER "] version"
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/objstr.h:47:93: note: in definition of macro ‘MP_DEFINE_STR_OBJ’
+   47 | #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
+      |                                                                                             ^~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:81:67: note: in expansion of macro ‘MICROPY_BANNER_MACHINE’
+   81 | static const MP_DEFINE_STR_OBJ(mp_sys_implementation_machine_obj, MICROPY_BANNER_MACHINE);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/mpconfig.h:2104:56: error: expected ‘)’ before string constant
+ 2104 | #define MICROPY_BANNER_MACHINE MICROPY_PY_SYS_PLATFORM " [" MICROPY_PLATFORM_COMPILER "] version"
+      |                                                        ^~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/objstr.h:47:93: note: in definition of macro ‘MP_DEFINE_STR_OBJ’
+   47 | #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
+      |                                                                                             ^~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:81:67: note: in expansion of macro ‘MICROPY_BANNER_MACHINE’
+   81 | static const MP_DEFINE_STR_OBJ(mp_sys_implementation_machine_obj, MICROPY_BANNER_MACHINE);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/objstr.h:47:92: note: to match this ‘(’
+   47 | #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
+      |                                                                                            ^
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:81:14: note: in expansion of macro ‘MP_DEFINE_STR_OBJ’
+   81 | static const MP_DEFINE_STR_OBJ(mp_sys_implementation_machine_obj, MICROPY_BANNER_MACHINE);
+      |              ^~~~~~~~~~~~~~~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/mpconfig.h:2104:56: error: expected ‘}’ before string constant
+ 2104 | #define MICROPY_BANNER_MACHINE MICROPY_PY_SYS_PLATFORM " [" MICROPY_PLATFORM_COMPILER "] version"
+      |                                                        ^~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/objstr.h:47:117: note: in definition of macro ‘MP_DEFINE_STR_OBJ’
+   47 | #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
+      |                                                                                                                     ^~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:81:67: note: in expansion of macro ‘MICROPY_BANNER_MACHINE’
+   81 | static const MP_DEFINE_STR_OBJ(mp_sys_implementation_machine_obj, MICROPY_BANNER_MACHINE);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/objstr.h:47:66: note: to match this ‘{’
+   47 | #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
+      |                                                                  ^
+${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c:81:14: note: in expansion of macro ‘MP_DEFINE_STR_OBJ’
+   81 | static const MP_DEFINE_STR_OBJ(mp_sys_implementation_machine_obj, MICROPY_BANNER_MACHINE);
+      |              ^~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "${WORKSPACE}/micropython_gtest_poc/scripts/build.py", line 25, in <module>
+    with concurrent.futures.ThreadPoolExecutor(4) as pool:list(pool.map(run,jobs))
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${WORKSPACE}/micropython_gtest_poc/scripts/build.py", line 24, in run
+    def run(cmd):subprocess.run(cmd,check=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['gcc', '-O2', '-g', '-DNDEBUG', '-ffunction-sections', '-fdata-sections', '-Isrc', '-I${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed', '-I${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/port', '-I${WORKSPACE}/rv32_gtest_poc/vendor/googletest-1.15.2/googletest/include', '-I${WORKSPACE}/rv32_gtest_poc/vendor/googletest-1.15.2/googletest', '-I${WORKSPACE}/rv32_gtest_poc/vendor/fff-1.1', '-std=gnu99', '-c', '${WORKSPACE}/micropython_gtest_poc/generated/micropython_embed/py/modsys.c', '-o', '${WORKSPACE}/micropython_gtest_poc/build/host/47_modsys.c.o']' returned non-zero exit status 1.

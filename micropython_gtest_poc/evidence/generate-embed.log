@@ -1,0 +1,23 @@
+Use make V=1 or set BUILD_VERBOSE in your environment to increase build verbosity.
+mkdir -p ../buildgen-final/genhdr
+makeversionhdr.py: Warning: No git repo or tag info available, falling back to mpconfig.h version info.
+GEN ../buildgen-final/genhdr/mpversion.h
+GEN ../buildgen-final/genhdr/qstr.i.last
+GEN ../buildgen-final/genhdr/moduledefs.split
+GEN ../buildgen-final/genhdr/moduledefs.collected
+Module registrations updated
+GEN ../buildgen-final/genhdr/moduledefs.h
+GEN ../buildgen-final/genhdr/qstr.split
+GEN ../buildgen-final/genhdr/qstrdefs.collected.h
+QSTR updated
+GEN ../buildgen-final/genhdr/qstrdefs.generated.h
+GEN ../buildgen-final/genhdr/root_pointers.split
+GEN ../buildgen-final/genhdr/root_pointers.collected
+Root pointer registrations updated
+GEN ../buildgen-final/genhdr/root_pointers.h
+Generate micropython_embed output:
+- py
+- extmod
+- shared
+- genhdr
+- port

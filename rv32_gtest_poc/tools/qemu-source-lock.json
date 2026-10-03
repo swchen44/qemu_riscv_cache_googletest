@@ -1,0 +1,20 @@
+[
+  {
+    "sha256": "a426c892e5369058c3423816c8625bc8010bb5a58ece57261f62b64ee4d765ad",
+    "bytes": 12462,
+    "file": "qemu_10.0.13+ds-0+deb13u1.dsc",
+    "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.dsc"
+  },
+  {
+    "sha256": "6a0888e806c2ffc0c5f0733e974f9aea55491950d3c47c98669c8b236dde59ae",
+    "bytes": 40010016,
+    "file": "qemu_10.0.13+ds.orig.tar.xz",
+    "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds.orig.tar.xz"
+  },
+  {
+    "sha256": "da73c092f5684c551b0334d675eb16a3dec91e1edea94759cfb1102fa4a0364e",
+    "bytes": 156096,
+    "file": "qemu_10.0.13+ds-0+deb13u1.debian.tar.xz",
+    "url": "https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz"
+  }
+]

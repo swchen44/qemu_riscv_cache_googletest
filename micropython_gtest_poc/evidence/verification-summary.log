@@ -1,0 +1,9 @@
+prepare PASS
+host-build PASS
+host-pass PASS
+host-negative PASS
+rv32-build PASS
+rv32-pass PASS
+rv32-negative-build PASS
+rv32-negative PASS
+HOST AND RV32 USE THE IDENTICAL TEST SOURCE; ALL EXPECTED OUTCOMES VERIFIED

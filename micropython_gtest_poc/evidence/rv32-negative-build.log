@@ -1,0 +1,7 @@
+${REPO}/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: ${REPO}/micropython_gtest_poc/build/rv32-negative/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 671176	   4272	 537168	1212616	 1280c8	${REPO}/micropython_gtest_poc/build/rv32-negative/firmware.elf
+COMPILED_C_SOURCES=134
+OUTPUT=${REPO}/micropython_gtest_poc/build/rv32-negative/firmware.elf
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

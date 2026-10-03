@@ -1,0 +1,63 @@
+${WORKSPACE}/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: build/cost-runtime_only/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+   8902	   1380	    388	  10670	   29ae	build/cost-runtime_only/firmware.elf
+${WORKSPACE}/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: build/cost-gtest_empty/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 514638	   4268	   7600	 526506	  808aa	build/cost-gtest_empty/firmware.elf
+[
+  {
+    "path": "build/cost-runtime_only/firmware.elf",
+    "text": 8902,
+    "data": 1380,
+    "bss": 388,
+    "elf_disk_bytes": 32700,
+    "configured_sbrk_capacity": 16635472,
+    "configured_startup_stack_reserve": 131072
+  },
+  {
+    "path": "build/cost-gtest_empty/firmware.elf",
+    "text": 514638,
+    "data": 4268,
+    "bss": 7600,
+    "elf_disk_bytes": 4083336,
+    "configured_sbrk_capacity": 16119568,
+    "configured_startup_stack_reserve": 131072
+  },
+  {
+    "path": "build/bare-gtest/firmware.elf",
+    "text": 535138,
+    "data": 4272,
+    "bss": 8720,
+    "elf_disk_bytes": 4402908,
+    "configured_sbrk_capacity": 16097936,
+    "configured_startup_stack_reserve": 131072
+  },
+  {
+    "path": "build/rtos/firmware.elf",
+    "text": 53588,
+    "data": 1760,
+    "bss": 266960,
+    "elf_disk_bytes": 182652,
+    "configured_sbrk_capacity": 16323824,
+    "configured_startup_stack_reserve": 131072
+  },
+  {
+    "path": "build/rtos-gtest/firmware.elf",
+    "text": 549934,
+    "data": 4292,
+    "bss": 275296,
+    "elf_disk_bytes": 4533160,
+    "configured_sbrk_capacity": 15816544,
+    "configured_startup_stack_reserve": 131072
+  },
+  {
+    "path": "../micropython_gtest_poc/build/rv32/firmware.elf",
+    "text": 670978,
+    "data": 4272,
+    "bss": 537168,
+    "elf_disk_bytes": 5996988,
+    "configured_sbrk_capacity": 15433648,
+    "configured_startup_stack_reserve": 131072
+  }
+]
+EMPTY_GTEST_INCREMENT {'text': 505736, 'data': 2888, 'bss': 7212}

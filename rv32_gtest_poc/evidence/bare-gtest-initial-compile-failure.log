@@ -1,0 +1,9 @@
+In file included from vendor/googletest-1.15.2/googletest/include/gtest/gtest-message.h:57,
+                 from vendor/googletest-1.15.2/googletest/include/gtest/gtest-assertion-result.h:46,
+                 from vendor/googletest-1.15.2/googletest/include/gtest/gtest.h:63,
+                 from tests/product_test.cc:1:
+vendor/googletest-1.15.2/googletest/include/gtest/internal/gtest-port.h: In function 'int testing::internal::posix::FileNo(FILE*)':
+vendor/googletest-1.15.2/googletest/include/gtest/internal/gtest-port.h:2067:40: error: 'fileno' was not declared in this scope; did you mean 'FileNo'?
+ 2067 | inline int FileNo(FILE* file) { return fileno(file); }
+      |                                        ^~~~~~
+      |                                        FileNo

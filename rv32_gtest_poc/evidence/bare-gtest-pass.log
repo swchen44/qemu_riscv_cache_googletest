@@ -1,0 +1,25 @@
+RV32 bare metal GoogleTest + FFF, no Linux, no RTOS
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from ProductTest
+[ RUN      ] ProductTest.DeterministicReplay
+[       OK ] ProductTest.DeterministicReplay (1 ms)
+[ RUN      ] ProductTest.RejectsInvalidInputs
+[       OK ] ProductTest.RejectsInvalidInputs (0 ms)
+[ RUN      ] ProductTest.FffReadFailureDoesNotWrite
+[       OK ] ProductTest.FffReadFailureDoesNotWrite (0 ms)
+[ RUN      ] ProductTest.FffAdapterCapturesOutputAndOrder
+[       OK ] ProductTest.FffAdapterCapturesOutputAndOrder (0 ms)
+[ RUN      ] ProductTest.FffRejectsOversizedDriverReply
+[       OK ] ProductTest.FffRejectsOversizedDriverReply (0 ms)
+[ DISABLED ] ProductTest.DISABLED_NegativeOracleMustFail
+[----------] 5 tests from ProductTest (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (9 ms total)
+[  PASSED  ] 5 tests.
+
+  YOU HAVE 1 DISABLED TEST
+
+
+HARNESS_EXIT=0; EXPECTED_EXIT=0

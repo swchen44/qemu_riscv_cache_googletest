@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "micropython": {
+    "version": "v1.26.1",
+    "commit": "647c8b96cae7e202c7a020395b7cfe65e5b8ce04",
+    "tag_object": "a77da3806bd4569921e615c2fffb0b76656921bd",
+    "archive": "vendor/micropython-v1.26.1.tar.gz",
+    "url": "https://codeload.github.com/micropython/micropython/tar.gz/refs/tags/v1.26.1",
+    "sha256": "10600e844f02a8b448cf176df71031d2eb3d731097a809a963ce9c35cef3d613",
+    "license": "MIT; see upstream LICENSE and component notices"
+  },
+  "reuse_sibling": "../rv32_gtest_poc",
+  "reuse_lock_sha256": "9cfbe2630f77921f569741c56bd208da2107a51840dc8cbec6967ea45a63fdd7",
+  "gtest_version": "1.15.2",
+  "fff_version": "1.1",
+  "gcc_version": "xPack15.2.0-1",
+  "qemu_debian_version": "1:10.0.13+ds-0+deb13u1",
+  "demo_isa": "rv32imac_zicsr",
+  "abi": "ilp32",
+  "real_chip_serial_baud": 921600,
+  "real_chip_serial_format": "not provided",
+  "qemu_uart_timing_equivalent_to_real_chip": false
+}

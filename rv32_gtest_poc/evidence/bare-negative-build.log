@@ -1,0 +1,3 @@
+${WORKSPACE}/rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld: warning: build/bare-negative/firmware.elf has a LOAD segment with RWX permissions
+   text	   data	    bss	    dec	    hex	filename
+ 535182	   4272	   8720	 548174	  85d4e	build/bare-negative/firmware.elf

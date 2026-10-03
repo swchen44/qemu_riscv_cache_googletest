@@ -1,0 +1,230 @@
+{
+  "note": "Official upstream source archives and xPack recipe/helper, version-selected from the shipped xPack distro-info/licenses. Source rebuild not performed; preserving these is not a bit-identical compiler rebuild claim.",
+  "sources": [
+    {
+      "component": "gcc",
+      "version": "15.2.0",
+      "official_url": "https://gcc.gnu.org/ftp/gcc/releases/gcc-15.2.0/gcc-15.2.0.tar.xz",
+      "filename": "gcc-15.2.0.tar.xz",
+      "status": "downloaded",
+      "bytes": 101056276,
+      "sha256": "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e"
+    },
+    {
+      "component": "binutils",
+      "version": "2.45",
+      "official_url": "https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz",
+      "filename": "binutils-2.45.tar.xz",
+      "status": "downloaded",
+      "bytes": 27868232,
+      "sha256": "c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2"
+    },
+    {
+      "component": "newlib",
+      "version": "4.5.0.20241231",
+      "official_url": "https://sourceware.org/pub/newlib/newlib-4.5.0.20241231.tar.gz",
+      "filename": "newlib-4.5.0.20241231.tar.gz",
+      "status": "downloaded",
+      "bytes": 9081514,
+      "sha256": "33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852"
+    },
+    {
+      "component": "gdb",
+      "version": "16.3",
+      "official_url": "https://ftp.gnu.org/gnu/gdb/gdb-16.3.tar.xz",
+      "filename": "gdb-16.3.tar.xz",
+      "status": "downloaded",
+      "bytes": 24434444,
+      "sha256": "bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5"
+    },
+    {
+      "component": "gmp",
+      "version": "6.3.0",
+      "official_url": "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz",
+      "filename": "gmp-6.3.0.tar.xz",
+      "status": "downloaded",
+      "bytes": 2094196,
+      "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+    },
+    {
+      "component": "mpfr",
+      "version": "4.2.2",
+      "official_url": "https://www.mpfr.org/mpfr-4.2.2/mpfr-4.2.2.tar.xz",
+      "filename": "mpfr-4.2.2.tar.xz",
+      "status": "downloaded",
+      "bytes": 1505596,
+      "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01"
+    },
+    {
+      "component": "mpc",
+      "version": "1.3.1",
+      "official_url": "https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz",
+      "filename": "mpc-1.3.1.tar.gz",
+      "status": "downloaded",
+      "bytes": 773573,
+      "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8"
+    },
+    {
+      "component": "isl",
+      "version": "0.27",
+      "official_url": "https://libisl.sourceforge.io/isl-0.27.tar.xz",
+      "filename": "isl-0.27.tar.xz",
+      "status": "downloaded",
+      "bytes": 2056436,
+      "sha256": "6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c"
+    },
+    {
+      "component": "bzip2",
+      "version": "1.0.8",
+      "official_url": "https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz",
+      "filename": "bzip2-1.0.8.tar.gz",
+      "status": "downloaded",
+      "bytes": 810029,
+      "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269"
+    },
+    {
+      "component": "expat",
+      "version": "2.7.3",
+      "official_url": "https://github.com/libexpat/libexpat/releases/download/R_2_7_3/expat-2.7.3.tar.xz",
+      "filename": "expat-2.7.3.tar.xz",
+      "status": "downloaded",
+      "bytes": 504744,
+      "sha256": "71df8f40706a7bb0a80a5367079ea75d91da4f8c65c58ec59bcdfbf7decdab9f"
+    },
+    {
+      "component": "gettext",
+      "version": "0.25",
+      "official_url": "https://ftp.gnu.org/gnu/gettext/gettext-0.25.tar.xz",
+      "filename": "gettext-0.25.tar.xz",
+      "status": "downloaded",
+      "bytes": 9932992,
+      "sha256": "05240b29f5b0f422e5a4ef8e9b5f76d8fa059cc057693d2723cdb76f36a88ab0"
+    },
+    {
+      "component": "gpm",
+      "version": "1.20.7-1",
+      "official_url": "https://codeload.github.com/xpack-dev-tools/gpm/tar.gz/refs/tags/v1.20.7-1",
+      "filename": "gpm-1.20.7-1.tar.gz",
+      "status": "downloaded",
+      "bytes": 859648,
+      "sha256": "c938bbaca3f5e2170bc65f406de3e33e92d6312eae41a739716428b635fb3b99"
+    },
+    {
+      "component": "libffi",
+      "version": "3.5.2",
+      "official_url": "https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-3.5.2.tar.gz",
+      "filename": "libffi-3.5.2.tar.gz",
+      "status": "downloaded",
+      "bytes": 1423124,
+      "sha256": "f3a3082a23b37c293a4fcd1053147b371f2ff91fa7ea1b2a52e335676bac82dc"
+    },
+    {
+      "component": "libiconv",
+      "version": "1.17",
+      "official_url": "https://ftp.gnu.org/gnu/libiconv/libiconv-1.17.tar.gz",
+      "filename": "libiconv-1.17.tar.gz",
+      "status": "downloaded",
+      "bytes": 5413283,
+      "sha256": "8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313"
+    },
+    {
+      "component": "libunistring",
+      "version": "1.4.1",
+      "official_url": "https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.1.tar.xz",
+      "filename": "libunistring-1.4.1.tar.xz",
+      "status": "downloaded",
+      "bytes": 2769164,
+      "sha256": "67d88430892527861903788868c77802a217b0959990f7449f2976126a307763"
+    },
+    {
+      "component": "mpdecimal",
+      "version": "4.0.1",
+      "official_url": "https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-4.0.1.tar.gz",
+      "filename": "mpdecimal-4.0.1.tar.gz",
+      "status": "downloaded",
+      "bytes": 316268,
+      "sha256": "96d33abb4bb0070c7be0fed4246cd38416188325f820468214471938545b1ac8"
+    },
+    {
+      "component": "ncurses",
+      "version": "6.5",
+      "official_url": "https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz",
+      "filename": "ncurses-6.5.tar.gz",
+      "status": "downloaded",
+      "bytes": 3688489,
+      "sha256": "136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6"
+    },
+    {
+      "component": "python",
+      "version": "3.13.7",
+      "official_url": "https://www.python.org/ftp/python/3.13.7/Python-3.13.7.tar.xz",
+      "filename": "Python-3.13.7.tar.xz",
+      "status": "downloaded",
+      "bytes": 22769492,
+      "sha256": "5462f9099dfd30e238def83c71d91897d8caa5ff6ebc7a50f14d4802cdaaa79a"
+    },
+    {
+      "component": "sqlite",
+      "version": "3500400",
+      "official_url": "https://www.sqlite.org/2025/sqlite-autoconf-3500400.tar.gz",
+      "filename": "sqlite-autoconf-3500400.tar.gz",
+      "status": "downloaded",
+      "bytes": 3173050,
+      "sha256": "a3db587a1b92ee5ddac2f66b3edb41b26f9c867275782d46c3a088977d6a5b18"
+    },
+    {
+      "component": "texinfo",
+      "version": "7.2",
+      "official_url": "https://ftp.gnu.org/gnu/texinfo/texinfo-7.2.tar.xz",
+      "filename": "texinfo-7.2.tar.xz",
+      "status": "downloaded",
+      "bytes": 6408432,
+      "sha256": "0329d7788fbef113fa82cb80889ca197a344ce0df7646fe000974c5d714363a6"
+    },
+    {
+      "component": "xz",
+      "version": "5.8.1",
+      "official_url": "https://github.com/tukaani-project/xz/releases/download/v5.8.1/xz-5.8.1.tar.xz",
+      "filename": "xz-5.8.1.tar.xz",
+      "status": "downloaded",
+      "bytes": 1461872,
+      "sha256": "0b54f79df85912504de0b14aec7971e3f964491af1812d83447005807513cd9e"
+    },
+    {
+      "component": "zlib",
+      "version": "1.3.1",
+      "official_url": "https://zlib.net/fossils/zlib-1.3.1.tar.gz",
+      "filename": "zlib-1.3.1.tar.gz",
+      "status": "downloaded",
+      "bytes": 1512791,
+      "sha256": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23"
+    },
+    {
+      "component": "zstd",
+      "version": "1.5.7",
+      "official_url": "https://codeload.github.com/facebook/zstd/tar.gz/refs/tags/v1.5.7",
+      "filename": "zstd-1.5.7.tar.gz",
+      "status": "downloaded",
+      "bytes": 2451884,
+      "sha256": "37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3"
+    },
+    {
+      "component": "xpack-recipe",
+      "version": "15.2.0-1.1",
+      "official_url": "https://codeload.github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/tar.gz/refs/tags/v15.2.0-1.1",
+      "filename": "xpack-recipe-v15.2.0-1.1.tar.gz",
+      "bytes": 1522230,
+      "sha256": "9e5280e46d586137cff4e271fcbb085dff7ff1e515fe71796a65b91ca58dd7e7",
+      "status": "downloaded"
+    },
+    {
+      "component": "xbb-helper",
+      "version": "4.3.15",
+      "official_url": "https://codeload.github.com/xpack-dev-tools/xbb-helper-xpack/tar.gz/refs/tags/v4.3.15",
+      "filename": "xbb-helper-v4.3.15.tar.gz",
+      "bytes": 2170944,
+      "sha256": "3f559de79464f54485ddc2bb90077a0fb28ef650b1eeb72519c193261e395d99",
+      "status": "downloaded"
+    }
+  ]
+}

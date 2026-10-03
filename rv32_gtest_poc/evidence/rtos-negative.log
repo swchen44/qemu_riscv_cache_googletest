@@ -1,0 +1,13 @@
+RV32 FreeRTOS actual kernel: demo profile rv32imac_zicsr / ilp32 / QEMU virt, NOT product timing model
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+FAIL: r.sum==REPLAY_SUM+1 line 33
+RTOS evidence: application_tasks=3 produced=8 processed=8 immediate_priority_preemptions=8 queue_timeouts=1 tick=16
+FAIL: replay, queue block/wakeup, timeout, delay, priority preemption, notifications
+
+HARNESS_EXIT=1; EXPECTED_EXIT=1
