@@ -1,6 +1,6 @@
 # RV32 GoogleTest / FreeRTOS / MicroPython 重現實驗
 
-> 發佈中：本批先提供可讀的計畫與FAQ。source/evidence及required Release資產正在補齊；目前不可只下載這個中間commit便宣稱完整離線重現。
+> 發佈中：source、測試、計畫與FAQ已提供；required Release資產與Ubuntu完整驗收仍在補齊，不能只下載Source ZIP便宣稱完整離線重現。
 
 **目前是功能測試移植。尚未在QEMU實作自訂L1/L2、ILM/DLM或cycle/latency model。** Repo名稱中的cache是後續研究方向，不是已完成項；QEMU/GoogleTest的ms不能證明產品200→150ms。
 
@@ -18,7 +18,7 @@
 | 上述Debian13 baseline乾淨重建 | 已驗證，包括此次新cloud還原重跑 |
 | Ubuntu24.04完整TCG VM | boot及host測試已PASS；FreeRTOS驗收發現completion同步race，已加入真barrier，正重跑 |
 | 自訂cache/timing模型、產品150ms | 尚未實作/驗證 |
-| 遠端commit新下載後重跑 | 首次推送後執行，未用本地結果冒充 |
+| 遠端commit新下載後重跑 | 已從9f9e8f4新clone驗SHA並跑15+8步PASS（Debian；固定local dependency cache） |
 
 詳細狀態以[Checklist](docs/CHECKLIST.md)、[證據說明](docs/EVIDENCE.md)與各evidence/results.json為準。
 

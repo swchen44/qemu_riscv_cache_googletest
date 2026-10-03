@@ -1,17 +1,33 @@
 #!/usr/bin/env bash
-# Run first without arguments to preview. --install changes the target Ubuntu OS.
+# Default simulates. --install requires a locally authorized Ubuntu administrator.
 set -euo pipefail
-B="$(cd "$(dirname "$0")/.." && pwd)"
+B=""; MODE=--simulate
+while (($#)); do
+ case "$1" in
+  --bundle-root) [[ $# -ge 2 ]] || exit 2; B="$2"; shift 2 ;;
+  --simulate|--install) MODE="$1";shift ;;
+  *) echo 'Usage: install-ubuntu-offline.sh --bundle-root DIRECTORY [--simulate|--install]' >&2;exit 2 ;;
+ esac
+done
+[[ -n "$B" ]] || { echo '--bundle-root is required' >&2;exit 2; }
+B="$(cd "$B" && pwd)"
 source /etc/os-release
-[[ "$ID" == ubuntu && "$VERSION_ID" == 24.04 && "$(dpkg --print-architecture)" == amd64 ]] || { echo 'Requires Ubuntu 24.04 amd64' >&2; exit 2; }
-python3 "$B/scripts/verify-bundle.py"
-mapfile -t debs < <(find "$B/apt/archives" -maxdepth 1 -name '*.deb' -type f | sort)
+[[ "$ID" == ubuntu && "$VERSION_ID" == 24.04 && "$(dpkg --print-architecture)" == amd64 ]] || { echo 'Requires Ubuntu 24.04 amd64' >&2;exit 2; }
+python3 "$(dirname "$0")/verify-bundle.py" --bundle-root "$B"
+# Install only verified lock entries, never every file found in a directory.
+mapfile -d '' -t debs < <(python3 - "$B" <<'PY'
+import json,pathlib,sys
+b=pathlib.Path(sys.argv[1])
+for d in json.loads((b/'ubuntu-packages.lock.json').read_text())['packages']:
+ p=(b/d['path']).resolve();assert p.is_relative_to(b)
+ sys.stdout.write(str(p)+'\0')
+PY
+)
 [[ ${#debs[@]} -gt 0 ]]
-case "${1:---simulate}" in
+case "$MODE" in
  --simulate) apt-get -o Dir::Cache::archives="$B/apt/archives" --simulate --no-download --no-remove install "${debs[@]}" ;;
  --install)
-  [[ $EUID == 0 ]] || { echo 'Installation requires target administrator privileges.' >&2; exit 2; }
+  [[ $EUID == 0 ]] || { echo 'Installation requires target administrator privileges.' >&2;exit 2; }
   DEBIAN_FRONTEND=noninteractive apt-get -o Dir::Cache::archives="$B/apt/archives" --yes --no-download --no-remove install "${debs[@]}"
   ;;
- *) echo "Usage: $0 [--simulate|--install]" >&2; exit 2 ;;
 esac

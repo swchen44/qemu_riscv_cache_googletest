@@ -18,9 +18,9 @@
 - [ ] Ubuntu24.04 userspace實際matrix PASS（待新證據）
 - [ ] Ubuntu官方依賴版本/URL/hash/license完整鎖定
 - [ ] Release工具包完成上傳，hash與size確認
-- [ ] main commit實際遠端可見；每commit含Why/What/Test
-- [ ] 從遠端實際commit新下載，source/dependency hashes通過
-- [ ] 遠端下載內容host/RV32/FreeRTOS/MicroPython完整重跑
+- [x] main source commit實際遠端可見；每commit含Why/What/Test
+- [x] 從遠端9f9e8f4新clone，source/dependency hashes通過（dependencies為固定local cache）
+- [x] 遠端source於Debian13重跑host/RV32/FreeRTOS/MicroPython 15+8步全PASS；Ubuntu另外待驗
 - [ ] 離線必帶清單完整且不依賴Library/private links
 
 ## 帶入內網前

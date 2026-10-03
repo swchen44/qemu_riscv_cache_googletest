@@ -39,3 +39,16 @@ Ubuntu profile確認/etc/os-release，不注入專案Debian LD_LIBRARY_PATH。�
 `dpkg-deb -x`只提取檔案，不執行package maintainer scripts，不等於完成正常system package安裝。不要把未測私有prefix當成適用所有Ubuntu機器的承諾。尤其host compiler的sysroot/headers/cc1路徑與QEMU外掛/data路径要一起處理，不能只搬一個binary。
 
 任何export只放在本次shell或wrapper中，不修改全域/etc、使用者永久啟動檔或company policy。沒有網路是正常offline流程，所有required bytes應事先帶入。
+
+## Repo腳本與Release bundle的位置契約
+
+Repo的`scripts/ubuntu/`不是工具bundle本身。三個腳本都要明確指定已解開的Release bundle root；該root須有`ubuntu-packages.lock.json`與`apt/archives/`。
+
+```sh
+B=/path/to/unpacked/ubuntu-offline-bundle
+python3 scripts/ubuntu/verify-bundle.py --bundle-root "$B"
+bash scripts/ubuntu/install-ubuntu-offline.sh --bundle-root "$B" --simulate
+# 只有當地授權管理員才執行 --install；脚本不自動sudo。
+```
+
+Installer僅安裝lock列出的、已驗SHA的121個required packages，不掃描目錄順便裝多餘deb；PRoot probe不是required dependency。`fetch-locked.py --bundle-root "$B"`是外部允許聯網預備機才用的下載器。其`--include-all-sources`/`--include-tcg`/`--include-base`需bundle內有對應source/image/TCG manifests，不能只拿repo單一script便假定這些optional bytes存在。
