@@ -1,0 +1,160 @@
+{
+  "utc": "2026-10-03T15:00:27.231089+00:00",
+  "host_profile": "debian-13",
+  "qemu_clock_profile": "icount",
+  "harness_step_timeout_seconds": 120,
+  "results": [
+    {
+      "name": "host-build",
+      "command": [
+        "scripts/build_host.sh"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "host-pass",
+      "command": [
+        "build/host/product_tests"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "host-negative",
+      "command": [
+        "build/host/product_tests",
+        "--gtest_also_run_disabled_tests",
+        "--gtest_filter=*Negative*"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-build",
+      "command": [
+        "scripts/build_rtos.sh",
+        "rtos"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-pass",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/rtos/firmware.elf"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-negative-build",
+      "command": [
+        "scripts/build_rtos.sh",
+        "rtos-negative",
+        "-DINJECT_FAILURE"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-negative",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/rtos-negative/firmware.elf"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "bare-gtest-build",
+      "command": [
+        "scripts/build_bare_gtest.sh",
+        "bare-gtest"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "bare-gtest-pass",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/bare-gtest/firmware.elf"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "bare-gtest-negative-build",
+      "command": [
+        "scripts/build_bare_gtest.sh",
+        "bare-gtest-negative",
+        "-DINJECT_FAILURE"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "bare-gtest-negative",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/bare-gtest-negative/firmware.elf"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-gtest-build",
+      "command": [
+        "scripts/build_rtos_gtest.sh",
+        "rtos-gtest"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-gtest-pass",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/rtos-gtest/firmware.elf"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-gtest-negative-build",
+      "command": [
+        "scripts/build_rtos_gtest.sh",
+        "rtos-gtest-negative",
+        "-DINJECT_FAILURE"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rtos-gtest-negative",
+      "command": [
+        "scripts/run_qemu.sh",
+        "build/rtos-gtest-negative/firmware.elf"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    }
+  ]
+}

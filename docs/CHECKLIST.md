@@ -19,8 +19,8 @@
 - [x] Ubuntu121 binary依賴、62套對應source的版本/URL/hash/license完整鎖定並下載
 - [ ] Release工具包完成上傳，hash與size確認
 - [x] main source commit實際遠端可見；每commit含Why/What/Test
-- [x] 從遠端9f9e8f4新clone，source/dependency hashes通過（dependencies為固定local cache）
-- [x] 遠端source於Debian13重跑host/RV32/FreeRTOS/MicroPython 15+8步全PASS；Ubuntu23步另有明示profile證據
+- [x] 從遠端8844093新clone，source/dependency hashes通過（dependencies為固定local cache）
+- [x] 遠端source於Debian13重跑15/icount＋8/raw及helper5全PASS；Ubuntu23步另有明示profile證據
 - [ ] 離線必帶清單完整且不依賴Library/private links
 
 ## 帶入內網前

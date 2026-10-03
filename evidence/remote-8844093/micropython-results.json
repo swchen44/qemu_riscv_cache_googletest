@@ -1,0 +1,93 @@
+{
+  "utc": "2026-10-03T15:01:14.033848+00:00",
+  "host_profile": "debian-13",
+  "qemu_clock_profile": "raw",
+  "harness_step_timeout_seconds": 180,
+  "shared_test_source": "tests/interpreter_test.cc",
+  "shared_test_sha256": "09653e3c43399c6fe3fc78432b439abbd62e5ef759ddd6d82a4530990cc9e62c",
+  "results": [
+    {
+      "name": "prepare",
+      "command": [
+        "python3",
+        "scripts/prepare.py"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "host-build",
+      "command": [
+        "python3",
+        "scripts/build.py",
+        "host"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "host-pass",
+      "command": [
+        "build/host/micropython_tests"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "host-negative",
+      "command": [
+        "build/host/micropython_tests",
+        "--gtest_also_run_disabled_tests",
+        "--gtest_filter=*Negative*"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "rv32-build",
+      "command": [
+        "python3",
+        "scripts/build.py",
+        "rv32"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rv32-pass",
+      "command": [
+        "scripts/run_rv32.sh"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rv32-negative-build",
+      "command": [
+        "python3",
+        "scripts/build.py",
+        "rv32",
+        "negative"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "rv32-negative",
+      "command": [
+        "scripts/run_rv32.sh",
+        "rv32-negative"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "status": "PASS"
+    }
+  ]
+}

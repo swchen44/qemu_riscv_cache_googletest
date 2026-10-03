@@ -1,0 +1,10 @@
+test_changed_required_bytes_rejected (test_offline_bundle_verifier.BundleVerifierTests.test_changed_required_bytes_rejected) ... ok
+test_explicit_root_passes (test_offline_bundle_verifier.BundleVerifierTests.test_explicit_root_passes) ... ok
+test_missing_root_rejected (test_offline_bundle_verifier.BundleVerifierTests.test_missing_root_rejected) ... ok
+test_path_escape_rejected (test_offline_bundle_verifier.BundleVerifierTests.test_path_escape_rejected) ... ok
+test_unlisted_extra_file_not_required (test_offline_bundle_verifier.BundleVerifierTests.test_unlisted_extra_file_not_required) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.203s
+
+OK

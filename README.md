@@ -18,7 +18,7 @@
 | 上述Debian13 baseline乾淨重建 | 已驗證，包括此次新cloud還原重跑 |
 | Ubuntu24.04完整TCG VM | 23/23步PASS：第一階段15/icount、MicroPython8/raw；保留raw timeout對照失敗 |
 | 自訂cache/timing模型、產品150ms | 尚未實作/驗證 |
-| 遠端commit新下載後重跑 | 已從9f9e8f4新clone驗SHA並跑15+8步PASS（Debian；固定local dependency cache） |
+| 遠端commit新下載後重跑 | 已從8844093新clone驗全Git SHA，15/icount＋8/raw與helper5 PASS（Debian；固定local dependency cache） |
 
 詳細狀態以[Checklist](docs/CHECKLIST.md)、[證據說明](docs/EVIDENCE.md)與各evidence/results.json為準。
 

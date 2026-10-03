@@ -9,3 +9,7 @@
 ## 已完成遠端source重現
 
 GitHub commit9f9e8f410ac23b7586ee1ed58543d48456d02f21已新clone，Git內容hash全過，Debian13的15+8步全PASS（含barrier）。具體logs在evidence/remote-debian；dependencies來自固定hash的local cache，未把這件事冒稱Release download驗收。
+
+## 最終功能source遠端重驗
+
+[88440935b08205b11c9b2cdfa9196ca5ad1986d0](https://github.com/swchen44/qemu_riscv_cache_googletest/commit/88440935b08205b11c9b2cdfa9196ca5ad1986d0)由新目錄實際clone，全部Git SHA通過，Debian13明示15/icount＋8/raw與helper5全部PASS。見evidence/remote-8844093。其後此紀錄commit只有文件/evidence，沒有更動測試/runtime來源。Release遠端下載驗證仍另外待完成。
