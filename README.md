@@ -25,6 +25,7 @@
 ## 文件入口
 
 - [計畫書與功能→性能階段](docs/PLAN.md)
+- [原始研究報告、方案比較與37個來源](docs/research/README.md)
 - [Checklist](docs/CHECKLIST.md)
 - [FAQ-001～005](rv32_gtest_poc/docs/FAQ.md)：重編、C++ linker、實測大小/記憶體、entry、尚未加入cache模型
 - [實際踩坑紀錄](docs/PITFALLS.md)
