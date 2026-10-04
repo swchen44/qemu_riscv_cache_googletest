@@ -6,7 +6,7 @@
 
 1. 讀README、AGENTS.md、PLAN、CHECKLIST、OFFLINE_HANDOFF與FAQ。列出verified/failed/not-run，不能把舊Debian結果稱Ubuntu通過。
 2. 記錄實際commit與工作樹變更；檢查Ubuntu24.04 x86-64與依賴bytes/hashes。
-3. 若在內網，使用offline模式，不連外；缺檔列出精確檔名/version/hash給操作者補齊。
+3. 先按Ubuntu指南probe既有工具；APT可用不代表有root，不用sudo或重装121包。只補缺項，xPack用官方固定archive私有解壓；四個Release鏡像是optional legacy。若在內網，使用offline模式，不連外；缺檔列出精確檔名/version/hash給操作者補齊。
 4. 跑host→RV32bare→FreeRTOS→MicroPython的既定commands，保留exit/count/negative結果。
 5. 真正成功後才接公司source，不要求把公司code送回此公開repo。
 

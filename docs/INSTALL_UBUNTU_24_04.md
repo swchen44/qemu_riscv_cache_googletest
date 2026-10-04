@@ -1,63 +1,86 @@
-# Ubuntu24.04 x86-64 安裝與驗收
+# Ubuntu24.04 x86-64：先用既有工具，無root安裝路線
 
-此為使用者確認的內網target。不能把歷史Debian13 QEMU deb直接當Ubuntu工具。
+2026-10-04更新：目標工程機有內網APT，但使用者沒有root；多數編譯工具已安裝。預設先probe已有工具。Ubuntu/QEMU/GCC本身使用prebuilt，不必自行重編；本專案、GoogleTest與MicroPython的host/RV32測試映像仍須build。
 
-1. 先執行 `python3 scripts/preflight.py --profile ubuntu-24.04`。不符distro/version/architecture時停止。
-2. 取得本repo指定的Ubuntu官方.deb離線bundle與manifest，按其固定版本安装指南處理host gcc/g++/make/Python/QEMU及依賴；涉及內網管理員權限時由當地授權管理員執行，不繞過公司政策。
-3. 確認xPack官方archive置於rv32_gtest_poc/tools，GoogleTest/FFF/FreeRTOS source tar在vendor。
-4. 只解共用sources/cross compiler，**不解Debian QEMU包**：
+## 1. 只讀檢查
+
+在repo root執行；不安裝或變更系統：
 
 ```sh
+python3 scripts/preflight.py --profile ubuntu-24.04
+command -v gcc g++ make python3 qemu-system-riscv32 bash tar gzip timeout sha256sum
+gcc --version
+g++ --version
+make --version
+python3 --version
+qemu-system-riscv32 --version
+dpkg-query -W build-essential gcc g++ make python3 qemu-system-misc
+apt-cache policy build-essential python3 qemu-system-misc
+```
+
+`preflight.py`目前只查host基本工具，不含QEMU或cross compiler，所以後續檢查仍必要。command/dpkg-query遇到缺項可能exit1，記錄missing即可；已具gcc/g++/headers/make時，不需要只為了build-essential這個meta-package重裝。版本報告留在內網，勿直接把公司環境資訊推回public repo。
+
+## 2. 直接套件需求與APT診斷
+
+| 頂層套件 | 實際用途 |
+|---|---|
+| build-essential | 便利meta-package，帶gcc/g++、make、C headers與相關建置工具 |
+| python3 | build/test harness及MicroPython產生器；Ubuntu24.04預設Python3.12符合脚本 |
+| qemu-system-misc | 本次Ubuntu8.2.2實測套件包含qemu-system-riscv32，供裸機/FreeRTOS system模擬 |
+
+正常Ubuntu已有bash、tar、gzip與coreutils（timeout/sha256sum）。git只在clone時需要；curl/ca-certificates只在使用HTTPS下載時需要，可以由公司其他合規搬運方式替代。CMake、Node/npm/xpm、Docker、PRoot及外層Ubuntu VM image不是本PoC原生Ubuntu路線的必備。
+
+先前121個.deb是空白離線VM的完整build/runtime依賴閉包，含許多傳遞libraries；不是要工程機逐一手動安裝121包。
+
+無root可先做simulation，列出缺項交IT：
+
+```sh
+apt-get --simulate --no-install-recommends install build-essential python3 qemu-system-misc
+```
+
+這不會安裝，也不授予安裝權限。若APT索引缺少/過舊，交公司管理員處理；本指南不執行sudo、不改APT sources、不自動update或降級系統libraries。已有工具直接用；不同安全更新版本須記錄並重跑既定測試，不能把舊版本pass直接套用。
+
+## 3. 特殊工具：xPack私有解壓
+
+已測工具鏈是xPack RISC-V GCC15.2.0-1（Linux x64），包含裸機newlib/libstdc++與RV32 multilib。Host gcc或gcc-riscv64-linux-gnu不能直接等同這個RV32裸機C++配置。公司既有裸機工具鏈可另評估，但須確認ISA/ABI、C++ runtime及multilib後重驗。
+
+官方[安裝指南](https://xpack-dev-tools.github.io/riscv-none-elf-gcc-xpack/docs/install/)支援手動下載解壓。固定官方archive：
+
+https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz
+
+大小433494794 bytes；SHA256 `aaaa8060c914851a3e5ee1ba82cc3d6f80972f90638a05c6e823a37557a33758`。官方URL與SHA亦在rv32_gtest_poc/dependencies.lock.json。
+
+把repo放在自己有寫權限的HOME目錄。以下下載只在公司允許連到官方來源的機器執行；內網APT可用不代表GitHub可用。若GitHub不可達，於允許的預備機下載核對後搬入相同位置。
+
+```sh
+mkdir -p rv32_gtest_poc/tools
+curl --fail --location --output rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz
+printf '%s  %s\n' aaaa8060c914851a3e5ee1ba82cc3d6f80972f90638a05c6e823a37557a33758 rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz | sha256sum -c -
 python3 scripts/prepare-ubuntu-sources.py .
+rv32_gtest_poc/tools/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-g++ --version
+```
+
+prepare只驗鎖定SHA並解壓到專案vendor/tools，沒有網路或系統安裝，不需要root。現有MicroPython build及共用env固定上述project tools路徑；把archive解到任意HOME共用prefix後只改PATH，**目前不保證可用**。將整個repo放HOME即可使用現有已測配置，毋須改永久PATH或/etc。
+
+## 4. 執行相同測試
+
+確認已有QEMU與host工具後：
+
+```sh
 export RV32_HOST_PROFILE=ubuntu-24.04
 export QEMU=/usr/bin/qemu-system-riscv32
 (cd rv32_gtest_poc && RV32_QEMU_CLOCK=icount python3 scripts/verify_all.py)
 (cd micropython_gtest_poc && RV32_QEMU_CLOCK=raw python3 scripts/verify_all.py)
 ```
 
-Ubuntu profile確認/etc/os-release，不注入專案Debian LD_LIBRARY_PATH。不要從先前的Debian shell繼承該路徑。
+Ubuntu profile查/etc/os-release，不注入Debian shared-library路徑。第一階段15步、MicroPython8步，正例5/6/11 tests與六個刻意exit1負例都需符合預期；0 tests/exit0不是成功。原Ubuntu完整VM已按15/icount＋8/raw通過，但**公司這台無root工程機尚未實測**。icount不是cycle/cache模型；真機150ms目標未驗證。
 
-## 狀態說明
+## 5. 如果缺QEMU而不能系統安裝
 
-- 官方121個Ubuntu binary依賴與62套/191檔對應source已實際下載驗SHA；Release發佈另列狀態。
-- 完整純TCG Ubuntu VM已離線安裝並實跑23/23步：15/icount與8/raw。原始log見evidence/ubuntu-24.04。
-- raw RTOS首wait曾timeout，保留失敗；正式功能命令必須明示icount，不將它當硬體cycle模型。
-- 慢巢狀TCG可明示export VERIFY_TIMEOUT_SECONDS=1800；這是外層harness等待，不改內層QEMU30秒或RTOS100tick。
-- PRoot因sandbox拒絕ptrace/execve而停止；最後成功使用另一允許的純TCG VM路線。
+優先將qemu-system-misc缺項與版本資訊交IT。`apt download`可以取.deb，`dpkg-deb -x`可以私有解壓；但它們不保證shared libraries、loader、data/modules路徑或maintainer scripts已處理完。此rootless private-QEMU路線尚未完成本專案驗收，不能承諾搬單一binary即可執行。若IT無法提供，需要另作有界依賴/ABI實驗並重跑矩陣，不變更host安全設定。
 
-## 不假設公司帳號有root/sudo或網路
+## 6. 歷史離線bundle屬可選備援
 
-先跑preflight，只讀環境，沒有安裝或安全設定變更。依結果選分支：
+[v0.1.0-poc-20261003](https://github.com/swchen44/qemu_riscv_cache_googletest/releases/tag/v0.1.0-poc-20261003)四個大型附件保留為optional legacy；此次文件更新沒有刪除或移tag。一般工程機不需要下載Ubuntu/toolchain的對應source archives，更不需要從它們重編工具。Ubuntu binary closure也不是已裝工具的工程機必帶項。xPack binary可從官方來源取得，無需使用此repo鏡像。
 
-| 狀況 | 路線 | host需要root？ |
-|---|---|---|
-| gcc/g++/make/Python與Ubuntu QEMU已由IT裝好 | 直接用現有工具，但核對版本/ABI並記錄差異 | 不需要 |
-| 只缺RISC-V cross compiler | 在專案tools或$HOME解壓固定xPack archive，局部PATH | 不需要 |
-| 缺QEMU但host build工具已齊 | 可用`dpkg-deb -x`將Ubuntu QEMU及完整shared-lib依賴私有解壓，使用僅對該process生效的wrapper；必須先檢查ldd/loader及跑matrix | 解壓不需要；此私有QEMU路線未完成獨立驗證前不可標PASS |
-| 缺host compiler/headers/make/Python等 | 將鎖定的Ubuntu.deb閉包交IT，依公司流程離線安裝；不要擅自sudo | 系統安裝需要當地授權管理員 |
-| 沒管理權限且私有依賴不完整/ABI不合 | 停止，列出缺檔/版本/符號給IT或操作者；不要偷偷連外或改security設定 | 不嘗試繞過 |
-
-`dpkg-deb -x`只提取檔案，不執行package maintainer scripts，不等於完成正常system package安裝。不要把未測私有prefix當成適用所有Ubuntu機器的承諾。尤其host compiler的sysroot/headers/cc1路徑與QEMU外掛/data路径要一起處理，不能只搬一個binary。
-
-任何export只放在本次shell或wrapper中，不修改全域/etc、使用者永久啟動檔或company policy。沒有網路是正常offline流程，所有required bytes應事先帶入。
-
-## Repo腳本與Release bundle的位置契約
-
-Repo的`scripts/ubuntu/`不是工具bundle本身。三個腳本都要明確指定已解開的Release bundle root；該root須有`ubuntu-packages.lock.json`與`apt/archives/`。
-
-```sh
-B=/path/to/unpacked/ubuntu-offline-bundle
-python3 scripts/ubuntu/verify-bundle.py --bundle-root "$B"
-bash scripts/ubuntu/install-ubuntu-offline.sh --bundle-root "$B" --simulate
-# 只有當地授權管理員才執行 --install；脚本不自動sudo。
-```
-
-Installer僅安裝lock列出的、已驗SHA的121個required packages，不掃描目錄順便裝多餘deb；PRoot probe不是required dependency。`fetch-locked.py --bundle-root "$B"`是外部允許聯網預備機才用的下載器。其`--include-all-sources`/`--include-tcg`/`--include-base`需bundle內有對應source/image/TCG manifests，不能只拿repo單一script便假定這些optional bytes存在。
-
-## 不碰OS的helper自我測試
-
-```sh
-python3 -m unittest discover -s tests -v
-```
-
-五個測試只在暫存目錄放合成bytes，檢查explicit root、缺root、hash不符、path traversal與多餘未列檔案；不呼叫apt、不安裝、不連網、不需root。
+若刻意重現空白離線VM的舊bundle方案，才使用scripts/ubuntu/*的明確`--bundle-root`契約；system installer的`--install`仍需要當地管理員。現有無root使用者不要執行該安裝分支。保留第三方license與source鎖檔作歷史研究；一般執行需求與再散布義務是不同問題。

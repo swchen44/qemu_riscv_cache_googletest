@@ -207,7 +207,7 @@ constructors在scheduler前執行；真正測試則在supervisor task中執行�
 
 ## 維護方式
 
-後續新問題從FAQ-006往後追加，寫明「短答、實作/實測證據、適用範圍、未驗證項」。修正舊題保留編號並補更新日期；不要把未測估計改寫成pass。README連到本檔，避免每次另建互相矛盾的FAQ副本。
+後續新問題從FAQ-008往後追加，寫明「短答、實作/實測證據、適用範圍、未驗證項」。修正舊題保留編號並補更新日期；不要把未測估計改寫成pass。README連到本檔，避免每次另建互相矛盾的FAQ副本。
 
 ## FAQ-005　這次有在QEMU加入快取機制或timing model嗎？
 
@@ -216,3 +216,15 @@ constructors在scheduler前執行；真正測試則在supervisor task中執行�
 `qemu_riscv_cache_googletest`是研究方向的repo名稱，不能視為cache model已完成。TCG自身的translation/code cache也不是被模擬產品的L1/L2 cache。
 
 已完成的是功能測試移植、框架/RTOS/interpreter實跑與可重現交付。Cache/timing工作列在[PLAN階段D](../../docs/PLAN.md)，仍需真core規格、trace與真機校準；GoogleTest ms、QEMU wall time、virtual ticks均不能證明200→150ms。
+
+## FAQ-006　Ubuntu相關source都要下載，工具都要重編嗎？
+
+不需要。一般重現使用已安裝或官方prebuilt的Ubuntu/QEMU/GCC工具。大型tool/OS corresponding-source包是研究、重建工具與原binary鏡像來源材料；它們不是跑這個PoC的輸入。121個.deb是歷史空白離線VM的傳遞依賴閉包，不是工程機要手動逐一安裝的清單。
+
+需要編譯的仍是本專案C/C++、GoogleTest與MicroPython的host/RV32映像。相同測試source跨架構需重編，不能把host executable直接交给RV32。四大Release包目前保留為optional legacy，沒有刪除；輕量流程見[Ubuntu指南](../../docs/INSTALL_UBUNTU_24_04.md)。
+
+## FAQ-007　內網能用APT但沒有root，怎麼處理？
+
+先probe gcc/g++/headers/make、Python3與qemu-system-riscv32，頂層套件可列build-essential、python3、qemu-system-misc。`apt-get --simulate`只列計畫，不安裝；已裝工具直接用，缺系統套件交IT。
+
+固定xPack15.2.0-1可從官方下載，驗SHA後解在自己HOME內repo/tools，不需root。現有build固定該project tools路徑；任意HOME共用prefix＋PATH尚未直接支援。缺QEMU時，apt download/dpkg-deb -x只能取包/解壓，不自動解決shared libraries/loader/data路徑；private-QEMU路線尚未驗證。公司無root工程機未實跑，不能把之前Ubuntu VM的23步成功當成這台機器已驗收。

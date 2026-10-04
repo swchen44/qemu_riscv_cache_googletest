@@ -1,6 +1,6 @@
 # 固定依賴、source與離線資產
 
-所有實際bytes以lock的SHA256為準；版本號/URL不是完整驗證的替代品。普通Git已放小型runtime source archives，大型toolchain/OS dependency包是另外的Release assets。尚未上傳並核對前不能標成已提供。
+所有實際bytes以lock的SHA256為準；版本號/URL不是完整驗證的替代品。普通Git已放小型runtime source archives，大型toolchain/OS dependency包是另外的Release assets。四個大型鏡像已發佈並保留為optional legacy；一般執行優先重用工程機工具及官方xPack來源。
 
 ## Runtime/test sources（普通Git有bytes）
 
@@ -13,14 +13,14 @@
 
 官方URL/SHA/bytes見兩專案dependencies.lock.json。source tar本身保留上游license。新專案MIT不覆蓋任何第三方條款。
 
-## Toolchain與Ubuntu Release候選
+## 歷史Toolchain/Ubuntu Release資產（可選）
 
 - xPack RISC-V GCC15.2.0-1官方Linux x64 archive：433494794 bytes；SHA256 `aaaa8060c914851a3e5ee1ba82cc3d6f80972f90638a05c6e823a37557a33758`。內含newlib/libstdc++與23項distro notice。
 - xPack component source包：235303198 bytes；SHA256 `f1c5309148669ac3a90ad68f6cbbba7b6b93abdc01b4a9b0a5166b6d85c9a662`。25個現成archive：23個component sources，加固定build recipe/helper；官方URL與逐檔SHA見manifests/toolchain-sources.lock.json。
 - Ubuntu24.04 binary addon：165859735 bytes，SHA256 `57ff71f308c6415ea353af9e1dc047399f7e20fcaaada0630feddc80b1c95694`；121個required binary build/runtime packages：官方版號/URL/SHA/license路徑見manifests/ubuntu-packages.lock.json。PRoot probe另列optional，不是安裝需求。
-- Ubuntu對應source包：62套source、191檔，source archives/metadata原始bytes總733960033；壓縮Release候選731976764 bytes，SHA256 `40ca91cd27453ab77831eafe13917fb4e075d36b1f1a49c477e8912037e67239`。exact .dsc/orig/debian來源，不是只有下載連結；逐檔lock為manifests/ubuntu-corresponding-sources.lock.json。
+- Ubuntu對應source包：62套source、191檔，source archives/metadata原始bytes總733960033；壓縮Release附件731976764 bytes，SHA256 `40ca91cd27453ab77831eafe13917fb4e075d36b1f1a49c477e8912037e67239`。exact .dsc/orig/debian來源，不是只有下載連結；逐檔lock為manifests/ubuntu-corresponding-sources.lock.json。
 
-此處是準備好的候選檔案資訊，不表示Release已完成發佈；實際asset URL/發佈狀態以最終manifest與README為準。
+以上是歷史空白離線VM交付資產，並非每位使用者的執行必需品；本次不刪附件。已裝Ubuntu工具不必重新安裝121包，tool/OS source不必下載或重編。固定版本與SHA保留作研究/驗證依据。
 
 ## Source完整性與重建界線
 

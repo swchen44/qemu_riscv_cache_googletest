@@ -1,41 +1,47 @@
 {
   "schema_version": 1,
-  "publication_status": "PREPARED_NOT_YET_RELEASE_UPLOADED",
+  "publication_status": "PUBLISHED_OPTIONAL_LEGACY_BUNDLES",
   "repository": "https://github.com/swchen44/qemu_riscv_cache_googletest",
-  "release_tag": null,
-  "source_commit": "Record exact published commit used; no mutable-main equivalence claim.",
+  "release_tag": "v0.1.0-poc-20261003",
+  "source_commit": "9398e2ee2c10b7e43f92633b1aec5e713dfb8c8b",
   "assets": [
     {
       "filename": "xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz",
       "bytes": 433494794,
       "sha256": "aaaa8060c914851a3e5ee1ba82cc3d6f80972f90638a05c6e823a37557a33758",
-      "required_for_complete_offline_handoff": true,
+      "required_for_complete_offline_handoff": false,
       "installation": "Copy to rv32_gtest_poc/tools/; offline preparation extracts privately.",
-      "download_url": null
+      "download_url": "https://github.com/swchen44/qemu_riscv_cache_googletest/releases/download/v0.1.0-poc-20261003/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz",
+      "usage": "optional legacy blank-offline-VM bundle; not required by current installed-tool workflow",
+      "official_upstream_url": "https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-linux-x64.tar.gz"
     },
     {
       "filename": "xpack-15.2.0-1-component-sources.tar.gz",
       "bytes": 235303198,
       "sha256": "f1c5309148669ac3a90ad68f6cbbba7b6b93abdc01b4a9b0a5166b6d85c9a662",
-      "required_for_complete_offline_handoff": true,
+      "required_for_complete_offline_handoff": false,
       "installation": "Extract in offline-sources/; exact archives and recipe/helper retained.",
-      "download_url": null
+      "download_url": "https://github.com/swchen44/qemu_riscv_cache_googletest/releases/download/v0.1.0-poc-20261003/xpack-15.2.0-1-component-sources.tar.gz",
+      "usage": "optional legacy blank-offline-VM bundle; not required by current installed-tool workflow"
     },
     {
       "filename": "ubuntu24.04-offline-addon-20261003.tar.gz",
       "bytes": 165859735,
       "sha256": "57ff71f308c6415ea353af9e1dc047399f7e20fcaaada0630feddc80b1c95694",
-      "required_for_complete_offline_handoff": true,
+      "required_for_complete_offline_handoff": false,
       "installation": "Extract; use resulting directory as --bundle-root. Read bundled instructions and simulate first.",
-      "download_url": null
+      "download_url": "https://github.com/swchen44/qemu_riscv_cache_googletest/releases/download/v0.1.0-poc-20261003/ubuntu24.04-offline-addon-20261003.tar.gz",
+      "usage": "optional legacy blank-offline-VM bundle; not required by current installed-tool workflow"
     },
     {
       "filename": "ubuntu24.04-corresponding-sources-20261003.tar.gz",
       "bytes": 731976764,
       "sha256": "40ca91cd27453ab77831eafe13917fb4e075d36b1f1a49c477e8912037e67239",
-      "required_for_complete_offline_handoff": true,
+      "required_for_complete_offline_handoff": false,
       "installation": "Extract in offline-sources/; 62 source packages, 191 official files.",
-      "download_url": null
+      "download_url": "https://github.com/swchen44/qemu_riscv_cache_googletest/releases/download/v0.1.0-poc-20261003/ubuntu24.04-corresponding-sources-20261003.tar.gz",
+      "usage": "optional legacy blank-offline-VM bundle; not required by current installed-tool workflow"
     }
-  ]
+  ],
+  "usage_profile": "Current guidance: reuse installed Ubuntu tools without root; obtain fixed xPack from official upstream. No asset deleted or tag moved by this documentation update."
 }

@@ -56,3 +56,7 @@
 ## 2026-10-03移植後發現的測試同步/clock問題
 
 Ubuntu巢狀TCG揭露了兩個先前Debian快速執行未暴露的條件：先是supervisor用固定sleep當producer完成證據（改為真semaphore barrier）；再是raw virtual clock的100tick期限早於producer開始。診斷固定記錄return/tick/task event，保留原嚴格assert，不以加sleep或拉長deadline混成成功。功能性replay另評估明示icount配置；raw-clock觀察與真機性能研究分開保存。正式完整matrix與最終flags以新log/commit為準。
+
+## 2026-10-04：改為無root工程機的輕量交付
+
+內網APT可用但無root，多數host工具已安裝。優先probe並重用工具，缺項交IT，固定xPack私有解壓；不要求重編Ubuntu/QEMU/GCC。四個大型Release包先保留為optional legacy，不刪除、不移tag。對應source與完整.deb閉包不再列為每位使用者必帶項。公司機實跑與private-QEMU仍待實際驗收；之前VM/遠端clone結果保持其原scope。

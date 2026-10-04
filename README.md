@@ -1,6 +1,6 @@
 # RV32 GoogleTest / FreeRTOS / MicroPython 重現實驗
 
-> 發佈中：source、測試、計畫與FAQ已提供；Ubuntu完整23步已實跑通過；required Release資產仍待發佈，不能只下載Source ZIP便宣稱完整離線重現。
+> 目前推薦輕量路線：先用Ubuntu工程機已裝工具；無root時只probe/診斷，特殊xPack工具私有解壓到自己的專案目錄。四個大型Release附件保留為optional legacy，不是每位使用者的必帶項。
 
 **目前是功能測試移植。尚未在QEMU實作自訂L1/L2、ILM/DLM或cycle/latency model。** Repo名稱中的cache是後續研究方向，不是已完成項；QEMU/GoogleTest的ms不能證明產品200→150ms。
 
@@ -29,7 +29,7 @@
 - [計畫書與功能→性能階段](docs/PLAN.md)
 - [原始研究報告、方案比較與37個來源](docs/research/README.md)
 - [Checklist](docs/CHECKLIST.md)
-- [FAQ-001～005](rv32_gtest_poc/docs/FAQ.md)：重編、C++ linker、實測大小/記憶體、entry、尚未加入cache模型
+- [FAQ-001～007](rv32_gtest_poc/docs/FAQ.md)：重編、C++ linker、實測大小/記憶體、entry、尚未加入cache模型、工具source用途、無root安裝
 - [Clock profiles與raw失敗](docs/CLOCK_PROFILES.md) / [固定依賴與source完整性](docs/DEPENDENCIES.md)
 - [實際踩坑紀錄](docs/PITFALLS.md)
 - [Ubuntu24.04安裝](docs/INSTALL_UBUNTU_24_04.md) / [Debian13歷史baseline](docs/INSTALL_DEBIAN_BASELINE.md)
@@ -41,7 +41,8 @@
 
 ```sh
 python3 scripts/preflight.py --profile ubuntu-24.04
-# 先按Ubuntu指南準備官方.deb與xPack離線工具，並驗SHA256。
+# 按Ubuntu指南額外查QEMU/現有套件；只補缺項。
+# xPack官方archive放專案tools並驗SHA，完全不需root。
 python3 scripts/prepare-ubuntu-sources.py .
 export RV32_HOST_PROFILE=ubuntu-24.04
 export QEMU=/usr/bin/qemu-system-riscv32
@@ -49,15 +50,15 @@ export QEMU=/usr/bin/qemu-system-riscv32
 (cd micropython_gtest_poc && RV32_QEMU_CLOCK=raw python3 scripts/verify_all.py)
 ```
 
-不假設公司帳號有sudo或網路：preflight後按安裝指南選已安裝、私有解壓或交IT離線安裝分支。
+內網APT可用但沒有root：先probe已有build-essential所提供工具、python3、qemu-system-misc。apt --simulate只做診斷；缺系統工具交IT。xPack可放HOME內repo/tools。Ubuntu/QEMU/GCC不用自己重編，專案/GTest/MicroPython測試仍要build。完整命令與限制見[Ubuntu指南](docs/INSTALL_UBUNTU_24_04.md)。
 
 這不是拿Debian13 QEMU deb在Ubuntu上直接執行。Ubuntu profile檢查實際userspace，不注入專案Debian shared-library路徑。缺依賴就停止，內網不得暗中下載。
 
 ## 下載整包到內網：務必讀
 
-普通Git包含本專案source/docs/tests以及GoogleTest/FFF/FreeRTOS/MicroPython固定release source tar。大型xPack工具、Ubuntu官方套件閉包與額外QEMU/compiler source將以同repo Release asset提供。
+普通Git包含本專案source/docs/tests，以及GoogleTest/FFF/FreeRTOS/MicroPython固定source tar。Ubuntu工具優先使用工程機已安裝套件；只缺特殊工具時從固定官方URL取得xPack，核對SHA後私有解壓。
 
-**GitHub「Source code(zip)」不包含Release assets。** 只按Download ZIP不能聲稱已帶齊離線工具；必須另外取得當前manifest列出的required assets、核對size/SHA。未完成Release上傳驗證前，離線交付仍標未完成。不依賴Library或私有下載URL；不使用LFS/submodule隱藏依賴缺口。
+**GitHub Source ZIP不含Release assets。** 這不表示輕量路線必須下載四個大包：它们是歷史空白離線VM的可選備援，tool/OS的對應source不參與一般build/run。[Release manifest](manifests/release-assets.json)保留檔名/hash與optional狀態；本次不刪附件、不移tag。[內網指南](docs/OFFLINE_HANDOFF.md)區分「工具已裝」與「完全離線空白環境」。
 
 ## 實驗版本與界線
 

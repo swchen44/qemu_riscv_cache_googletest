@@ -17,20 +17,29 @@
 - [x] 使用者確認Ubuntu24.04 x86-64
 - [x] Ubuntu24.04完整VM normal matrix 23/23 PASS（15/icount、8/raw）；原始證據與raw失敗保留
 - [x] Ubuntu121 binary依賴、62套對應source的版本/URL/hash/license完整鎖定並下載
-- [ ] Release工具包完成上傳，hash與size確認
+- [x] 四個Release附件已發布；目前保留為optional legacy，本次沒有刪除
 - [x] main source commit實際遠端可見；每commit含Why/What/Test
 - [x] 從遠端8844093新clone，source/dependency hashes通過（dependencies為固定local cache）
 - [x] 遠端source於Debian13重跑15/icount＋8/raw及helper5全PASS；Ubuntu23步另有明示profile證據
-- [ ] 離線必帶清單完整且不依賴Library/private links
+- [x] 輕量路線列出官方xPack URL/SHA、APT頂層需求與無root限制，不依賴Library/private links
 
 ## 帶入內網前
 
 - [ ] 閱讀docs/OFFLINE_HANDOFF.md，理解GitHub source ZIP不含Release assets
-- [ ] 取得指定source commit及所有required Release assets
+- [ ] 取得指定source commit；按實際缺項準備工具，勿預設四大Release包都必需
 - [ ] 驗證完整SHA256清單、scan與公司開源/資安規範
 - [ ] 備份Ubuntu版本/architecture/libc與必要host工具清單
 - [ ] 斷網模式缺檔即fail，不能偷偷download或skip
 - [ ] 保存原始測試log與預期case count/negative結果
+
+## 無root工程機驗收（尚未在公司機執行）
+
+- [ ] probe既有gcc/g++/make/headers、Python3、qemu-system-riscv32及版本
+- [ ] 缺套件只用APT simulation列缺項，交IT；不假設sudo
+- [ ] 固定xPack官方archive size/SHA正確，私有project tools路徑可執行
+- [ ] 工具版本不同時記錄並重跑15/icount＋8/raw，保留正負例
+- [ ] 若改用其他cross compiler或private-QEMU，另外驗ISA/ABI/runtime/shared-libraries
+- [ ] 最終整合版獨立review回覆未取得，不宣稱已完成
 
 ## 公司code與真機
 
